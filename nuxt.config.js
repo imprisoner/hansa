@@ -16,12 +16,13 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic'}
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/static/fonts.css'
+    // '~/static/fonts.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
