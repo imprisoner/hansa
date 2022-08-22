@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Все о кухнях: как правильно выбрать",
+    "publish_date": "13.06.2022",
+    "image": {
+      "url": "/images/articles/01.jpg",
+      "alt": ""
+    },
+    "url": "#"
+  },
+  {
+    "title": "Как правильно выбрать кухню",
+    "publish_date": "13.06.2022",
+    "image": {
+      "url": "/images/articles/02.jpg",
+      "alt": ""
+    },
+    "url": "#"
+  },
+  {
+    "title": "Как правильно выбрать шкаф",
+    "publish_date": "13.06.2022",
+    "image": {
+      "url": "/images/articles/03.jpg",
+      "alt": ""
+    },
+    "url": "#"
+  },
+  {
+    "title": "Как правильно выбрать комод",
+    "publish_date": "13.06.2022",
+    "image": {
+      "url": "/images/articles/04.jpg",
+      "alt": ""
+    },
+    "url": "#"
+  }
+]

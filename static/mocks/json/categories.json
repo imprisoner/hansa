@@ -1,0 +1,128 @@
+[
+  {
+    "title": "Шкафы",
+    "links": [
+      {
+        "label": "Ссылка 1",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 2",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 3",
+        "href": "#"
+      }
+    ],
+    "image": {
+      "url": "/images/products/closet.jpg",
+      "alt": ""
+    }
+  },
+  {
+    "title": "Кухни",
+    "links": [
+      {
+        "label": "Ссылка 1",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 2",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 3",
+        "href": "#"
+      }
+    ],
+    "image": {
+      "url": "/images/products/kitchen.jpg",
+      "alt": ""
+    }
+  },
+  {
+    "title": "Мягкая мебель",
+    "links": [
+      {
+        "label": "Ссылка 1",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 2",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 3",
+        "href": "#"
+      }
+    ],
+    "image": {
+      "url": "/images/products/soft.jpg",
+      "alt": ""
+    }
+  },
+  {
+    "title": "Тумбочки",
+    "links": [
+      {
+        "label": "Ссылка 1",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 2",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 3",
+        "href": "#"
+      }
+    ],
+    "image": {
+      "url": "/images/products/stand.jpg",
+      "alt": ""
+    }
+  },
+  {
+    "title": "Сопутствующие товары",
+    "links": [
+      {
+        "label": "Ссылка 1",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 2",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 3",
+        "href": "#"
+      }
+    ],
+    "image": {
+      "url": "/images/products/accessories.jpg",
+      "alt": ""
+    }
+  },
+  {
+    "title": "Lorem Ipsum",
+    "links": [
+      {
+        "label": "Ссылка 1",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 2",
+        "href": "#"
+      },
+      {
+        "label": "Ссылка 3",
+        "href": "#"
+      }
+    ],
+    "image": {
+      "url": "",
+      "alt": ""
+    }
+  }
+]
