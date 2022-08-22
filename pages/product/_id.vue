@@ -23,7 +23,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/kitchen.jpg"
+                src="/images/products/kitchen.jpg"
                 alt="Картинка"
               />
             </div>
@@ -36,7 +36,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -44,7 +44,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -58,7 +58,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -66,7 +66,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -78,7 +78,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/kitchen.jpg"
+                src="/images/products/kitchen.jpg"
                 alt="Картинка"
               />
             </div>
@@ -86,7 +86,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -94,7 +94,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -109,7 +109,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -117,7 +117,7 @@
               <v-img
                 max-height="100%"
                 contain
-                src="images/products/closet.jpg"
+                src="/images/products/closet.jpg"
                 alt="Картинка"
               />
             </div>
@@ -131,7 +131,7 @@
               product.title
             }}</v-card-title>
             <v-card-actions>
-              <v-btn icon @click="onScalesClick" style="z-index: 10">
+              <v-btn icon @click="onScalesClick" style="z-index: 1">
                 <v-icon>
                   {{ icons.scales }}
                 </v-icon>

@@ -64,7 +64,9 @@
             <v-card>
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div>
-                  <v-card-title> {{ cat.title }} </v-card-title>
+                  <nuxt-link :to="`/category/${cat.id}`">
+                    <v-card-title> {{ cat.title }} </v-card-title>
+                  </nuxt-link>
                   <v-divider></v-divider>
                   <v-list>
                     <v-list-item v-for="(link, j) in cat.links" :key="j">
@@ -267,72 +269,63 @@ import "swiper/swiper.min.css";
 
 export default {
   async mounted() {
+    if (!this.catalog.length) {
+      await this.$store.dispatch("catalog/getCatalog");
+    }
 
-      if(!this.catalog.length) {
-        await this.$store.dispatch('catalog/getCatalog')
-      }
+    const sliderSections = ["hits", "discounts", "kitchens", "new"];
+    const entries = sliderSections.map((key) => [key, null]);
 
-      const sliderSections = ["hits", "discounts", "kitchens", "new"];
-      const entries = sliderSections.map((key) => [key, null]);
+    this.sliders = Object.fromEntries(entries);
 
-      this.sliders = Object.fromEntries(entries);
-
-      this.sliders.hits = new this.$swiper(".hits-slider", {
-        spaceBetween: 20,
-        slidesPerView: 3,
-        direction: "horizontal",
-        centeredSlides: true,
-        autoHeight: true,
-        autoplay: {
-          delay: 3000
-        },
-        // configure Swiper to use modules
-        modules: [
-          this.$swiperModules.Autoplay
-        ],
-      });
-      this.sliders.kitchens = new this.$swiper(".kitchens-slider", {
-        spaceBetween: 20,
-        slidesPerView: 3,
-        direction: "horizontal",
-        centeredSlides: true,
-        autoHeight: true,
-        autoplay: {
-          delay: 3000
-        },
-        // configure Swiper to use modules
-        modules: [
-          this.$swiperModules.Autoplay
-        ],
-      });
-      this.sliders.discounts = new this.$swiper(".discounts-slider", {
-        spaceBetween: 20,
-        slidesPerView: 3,
-        direction: "horizontal",
-        centeredSlides: true,
-        autoHeight: true,
-        autoplay: {
-          delay: 3000
-        },
-        // configure Swiper to use modules
-        modules: [
-          this.$swiperModules.Autoplay
-        ],
-      });
-      this.sliders.new = new this.$swiper(".new-slider", {
-        spaceBetween: 20,
-        slidesPerView: 2,
-        direction: "horizontal",
-        // centeredSlides: true,
-        autoHeight: true,
-        autoplay: {
-          delay: 3000
-        },
-        // configure Swiper to use modules
-        modules: [
-          this.$swiperModules.Autoplay
-        ],
-      });
+    this.sliders.hits = new this.$swiper(".hits-slider", {
+      spaceBetween: 20,
+      slidesPerView: 3,
+      direction: "horizontal",
+      centeredSlides: true,
+      autoHeight: true,
+      autoplay: {
+        delay: 3000,
+      },
+      // configure Swiper to use modules
+      modules: [this.$swiperModules.Autoplay],
+    });
+    this.sliders.kitchens = new this.$swiper(".kitchens-slider", {
+      spaceBetween: 20,
+      slidesPerView: 3,
+      direction: "horizontal",
+      centeredSlides: true,
+      autoHeight: true,
+      autoplay: {
+        delay: 3000,
+      },
+      // configure Swiper to use modules
+      modules: [this.$swiperModules.Autoplay],
+    });
+    this.sliders.discounts = new this.$swiper(".discounts-slider", {
+      spaceBetween: 20,
+      slidesPerView: 3,
+      direction: "horizontal",
+      centeredSlides: true,
+      autoHeight: true,
+      autoplay: {
+        delay: 3000,
+      },
+      // configure Swiper to use modules
+      modules: [this.$swiperModules.Autoplay],
+    });
+    this.sliders.new = new this.$swiper(".new-slider", {
+      spaceBetween: 20,
+      slidesPerView: 2,
+      direction: "horizontal",
+      // centeredSlides: true,
+      autoHeight: true,
+      autoplay: {
+        delay: 3000,
+      },
+      // configure Swiper to use modules
+      modules: [this.$swiperModules.Autoplay],
+    });
   },
   name: "IndexPage",
   data() {
@@ -396,5 +389,10 @@ section:not(:first-child) {
   word-break: break-word;
   min-height: 96px;
   align-items: baseline;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 </style>

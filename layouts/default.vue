@@ -60,10 +60,10 @@
               />
             </v-btn>
           </template>
-          <v-list>
+          <v-list max-height="400px" style="overflow-y: scroll">
             <v-list-item-group>
               <template v-for="(item, i) in cart">
-                <v-list-item :key="item.id" nuxt :to="`/product`">
+                <v-list-item :key="item.id" nuxt :to="`/product/${item.id}`" active-class="none" >
                   <v-list-item-avatar tile height="80" width="80">
                     <v-img
                       :src="item.image.url"

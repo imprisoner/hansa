@@ -11,7 +11,7 @@
     </v-avatar>
     <v-card-title class="d-flex justify-space-between">
       <nuxt-link
-        to="/product"
+        :to="`/product/${product.id}`"
         active-class="product-card__link-active"
         exact-active-class="product-card__link-exact"
       >
@@ -93,9 +93,6 @@ import {
 
 export default {
   props: ["product"],
-  mounted() {
-    console.log(this.product)
-  },
   data() {
     return {
       icons: {
