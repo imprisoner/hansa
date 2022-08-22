@@ -101,7 +101,7 @@
               <div class="swiper-wrapper">
                 <div
                   class="swiper-slide"
-                  v-for="(product, i) in products"
+                  v-for="(product, i) in catalog"
                   :key="i"
                 >
                   <product-card :product="product" />
@@ -134,7 +134,7 @@
               <div class="swiper-wrapper">
                 <div
                   class="swiper-slide"
-                  v-for="(product, i) in products"
+                  v-for="(product, i) in catalog"
                   :key="i"
                 >
                   <product-card :product="product" />
@@ -164,7 +164,7 @@
               <div class="swiper-wrapper">
                 <div
                   class="swiper-slide"
-                  v-for="(product, i) in products"
+                  v-for="(product, i) in catalog"
                   :key="i"
                 >
                   <product-card :product="product" />
@@ -263,64 +263,76 @@ import {
   mdiSaleOutline,
 } from "@mdi/js";
 
-// import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue";
 import "swiper/swiper.min.css";
 
 export default {
-  // components: {
-  //   Swiper,
-  //   SwiperSlide,
-  // },
-  mounted() {
-    const sliderSections = ["hits", "discounts", "kitchens", "new"];
-    const entries = sliderSections.map((key) => [key, null]);
+  async mounted() {
 
-    this.sliders = Object.fromEntries(entries);
+      if(!this.catalog.length) {
+        await this.$store.dispatch('catalog/getCatalog')
+      }
 
-    this.sliders.hits = new this.$swiper(".hits-slider", {
-      loop: true,
-      spaceBetween: 20,
-      slidesPerView: 3,
-      direction: "horizontal",
-      centeredSlides: true,
-      autoHeight: true,
-      // configure Swiper to use modules
-      // modules: [
-      //   this.$swiperModules.Navigation,
-      //   this.$swiperModules.Pagination,
-      //   this.$swiperModules.Scrollbar,
-      // ],
-    });
-    this.sliders.kitchens = new this.$swiper(".kitchens-slider", {
-      loop: true,
-      spaceBetween: 20,
-      slidesPerView: 3,
-      direction: "horizontal",
-      centeredSlides: true,
-      autoHeight: true,
-      // configure Swiper to use modules
-      // modules: [
-      //   this.$swiperModules.Navigation,
-      //   this.$swiperModules.Pagination,
-      //   this.$swiperModules.Scrollbar,
-      // ],
-    });
-    this.sliders.discounts = new this.$swiper(".discounts-slider", {
-      loop: true,
-      spaceBetween: 20,
-      slidesPerView: 3,
-      direction: "horizontal",
-      centeredSlides: true,
-      autoHeight: true,
-    });
-    this.sliders.new = new this.$swiper(".new-slider", {
-      loop: true,
-      spaceBetween: 20,
-      slidesPerView: 2,
-      direction: "horizontal",
-      // centeredSlides: true,
-      autoHeight: true,
-    });
+      const sliderSections = ["hits", "discounts", "kitchens", "new"];
+      const entries = sliderSections.map((key) => [key, null]);
+
+      this.sliders = Object.fromEntries(entries);
+
+      this.sliders.hits = new this.$swiper(".hits-slider", {
+        spaceBetween: 20,
+        slidesPerView: 3,
+        direction: "horizontal",
+        centeredSlides: true,
+        autoHeight: true,
+        autoplay: {
+          delay: 3000
+        },
+        // configure Swiper to use modules
+        modules: [
+          this.$swiperModules.Autoplay
+        ],
+      });
+      this.sliders.kitchens = new this.$swiper(".kitchens-slider", {
+        spaceBetween: 20,
+        slidesPerView: 3,
+        direction: "horizontal",
+        centeredSlides: true,
+        autoHeight: true,
+        autoplay: {
+          delay: 3000
+        },
+        // configure Swiper to use modules
+        modules: [
+          this.$swiperModules.Autoplay
+        ],
+      });
+      this.sliders.discounts = new this.$swiper(".discounts-slider", {
+        spaceBetween: 20,
+        slidesPerView: 3,
+        direction: "horizontal",
+        centeredSlides: true,
+        autoHeight: true,
+        autoplay: {
+          delay: 3000
+        },
+        // configure Swiper to use modules
+        modules: [
+          this.$swiperModules.Autoplay
+        ],
+      });
+      this.sliders.new = new this.$swiper(".new-slider", {
+        spaceBetween: 20,
+        slidesPerView: 2,
+        direction: "horizontal",
+        // centeredSlides: true,
+        autoHeight: true,
+        autoplay: {
+          delay: 3000
+        },
+        // configure Swiper to use modules
+        modules: [
+          this.$swiperModules.Autoplay
+        ],
+      });
   },
   name: "IndexPage",
   data() {
@@ -331,286 +343,6 @@ export default {
         order: mdiClipboardCheckOutline,
         sale: mdiSaleOutline,
       },
-      categories: [
-        {
-          title: "Шкафы",
-          links: [
-            {
-              label: "Ссылка 1",
-              href: "#",
-            },
-            {
-              label: "Ссылка 2",
-              href: "#",
-            },
-            {
-              label: "Ссылка 3",
-              href: "#",
-            },
-          ],
-          image: {
-            url: "/images/products/closet.jpg",
-            alt: "",
-          },
-        },
-        {
-          title: "Кухни",
-          links: [
-            {
-              label: "Ссылка 1",
-              href: "#",
-            },
-            {
-              label: "Ссылка 2",
-              href: "#",
-            },
-            {
-              label: "Ссылка 3",
-              href: "#",
-            },
-          ],
-          image: {
-            url: "/images/products/kitchen.jpg",
-            alt: "",
-          },
-        },
-        {
-          title: "Мягкая мебель",
-          links: [
-            {
-              label: "Ссылка 1",
-              href: "#",
-            },
-            {
-              label: "Ссылка 2",
-              href: "#",
-            },
-            {
-              label: "Ссылка 3",
-              href: "#",
-            },
-          ],
-          image: {
-            url: "/images/products/soft.jpg",
-            alt: "",
-          },
-        },
-        {
-          title: "Тумбочки",
-          links: [
-            {
-              label: "Ссылка 1",
-              href: "#",
-            },
-            {
-              label: "Ссылка 2",
-              href: "#",
-            },
-            {
-              label: "Ссылка 3",
-              href: "#",
-            },
-          ],
-          image: {
-            url: "/images/products/stand.jpg",
-            alt: "",
-          },
-        },
-        {
-          title: "Сопутствующие товары",
-          links: [
-            {
-              label: "Ссылка 1",
-              href: "#",
-            },
-            {
-              label: "Ссылка 2",
-              href: "#",
-            },
-            {
-              label: "Ссылка 3",
-              href: "#",
-            },
-          ],
-          image: {
-            url: "/images/products/accessories.jpg",
-            alt: "",
-          },
-        },
-        {
-          title: "Lorem Ipsum",
-          links: [
-            {
-              label: "Ссылка 1",
-              href: "#",
-            },
-            {
-              label: "Ссылка 2",
-              href: "#",
-            },
-            {
-              label: "Ссылка 3",
-              href: "#",
-            },
-          ],
-          image: {
-            url: "",
-            alt: "",
-          },
-        },
-      ],
-      products: [
-        {
-          id: 1,
-          title: "Шкаф купе",
-          dimensions: [80, 50, 240],
-          materials: ["Орех", "Алюминий"],
-          rating: 3.6,
-          price: 70719,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/closet.jpg",
-            alt: "",
-          },
-          description:
-            "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
-        },
-        {
-          id: 2,
-          title: "Шкаф купе",
-          dimensions: [80, 50, 240],
-          materials: ["Белёный дуб", "Сталь"],
-          rating: 3.6,
-          price: 70719,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/closet.jpg",
-            alt: "",
-          },
-          description:
-            "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
-        },
-        {
-          id: 3,
-          title: "Шкаф купе",
-          dimensions: [80, 50, 240],
-          materials: ["Чёрное дерево", "Хром"],
-          rating: 3.6,
-          price: 70719,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/closet.jpg",
-            alt: "",
-          },
-          description:
-            "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
-        },
-        {
-          id: 4,
-          title: "Шкаф купе",
-          dimensions: [80, 50, 240],
-          materials: ["Черное дерево", "Алюминий"],
-          rating: 3.6,
-          price: 70719,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/closet.jpg",
-            alt: "",
-          },
-          description:
-            "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
-        },
-      ],
-      articles: [
-        {
-          title: "Все о кухнях: как правильно выбрать",
-          publish_date: "13.06.2022",
-          image: {
-            url: "/images/articles/01.jpg",
-            alt: "",
-          },
-          url: "#",
-        },
-        {
-          title: "Как правильно выбрать кухню",
-          publish_date: "13.06.2022",
-          image: {
-            url: "/images/articles/02.jpg",
-            alt: "",
-          },
-          url: "#",
-        },
-        {
-          title: "Как правильно выбрать шкаф",
-          publish_date: "13.06.2022",
-          image: {
-            url: "/images/articles/03.jpg",
-            alt: "",
-          },
-          url: "#",
-        },
-        {
-          title: "Как правильно выбрать комод",
-          publish_date: "13.06.2022",
-          image: {
-            url: "/images/articles/04.jpg",
-            alt: "",
-          },
-          url: "#",
-        },
-      ],
       unknown: [
         {
           title: "Lorem Ipsum",
@@ -623,121 +355,21 @@ export default {
           url: "#",
         },
       ],
-      kitchens: [
-        {
-          id: 1,
-          title: "Кухня",
-          dimensions: [80, 50, 240],
-          materials: ["Орех", "Алюминий"],
-          rating: 3.6,
-          price: 125000,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/kitchen.jpg",
-            alt: "",
-          },
-          description:
-            "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
-        },
-        {
-          id: 2,
-          title: "Кухня",
-          dimensions: [80, 50, 240],
-          materials: ["Белёный дуб", "Сталь"],
-          rating: 3.6,
-          price: 125000,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/kitchen.jpg",
-            alt: "",
-          },
-          description:
-            "Кухонный гарнитур Kitchen-Fast поможет дополнить интерьер кухни.",
-        },
-        {
-          id: 3,
-          title: "Кухня",
-          dimensions: [80, 50, 240],
-          materials: ["Чёрное дерево", "Хром"],
-          rating: 3.6,
-          price: 125000,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/kitchen.jpg",
-            alt: "",
-          },
-          description:
-            "Кухонный гарнитур Kitchen-Fast поможет дополнить интерьер кухни.",
-        },
-        {
-          id: 4,
-          title: "Кухня",
-          dimensions: [80, 50, 240],
-          materials: ["Черное дерево", "Алюминий"],
-          rating: 3.6,
-          price: 125000,
-          feedbacks: [
-            { id: 1 },
-            { id: 2 },
-            { id: 3 },
-            { id: 4 },
-            { id: 5 },
-            { id: 6 },
-            { id: 7 },
-            { id: 8 },
-            { id: 9 },
-            { id: 10 },
-            { id: 11 },
-            { id: 12 },
-          ],
-          image: {
-            url: "/images/products/kitchen.jpg",
-            alt: "",
-          },
-          description:
-            "Кухонный гарнитур Kitchen-Fast поможет дополнить интерьер кухни.",
-        },
-      ],
     };
+  },
+  computed: {
+    catalog() {
+      return this.$store.getters["catalog/all"];
+    },
+    articles() {
+      return this.$store.getters["articles/all"];
+    },
+    categories() {
+      return this.$store.getters["categories/all"];
+    },
+    kitchens() {
+      return this.$store.getters["catalog/kitchens"];
+    },
   },
 };
 </script>

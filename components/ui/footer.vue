@@ -108,14 +108,44 @@
                 <h5 class="text-h5 text-uppercase font-weight-medium">
                   Контакты
                 </h5>
-                <v-list-item link to
-                  >Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Mollitia, accusantium!</v-list-item
-                >
-                <v-list-item link to>Каталог</v-list-item>
-                <v-list-item link to>О нас</v-list-item>
-                <v-list-item link to>Условия оплаты и доставки</v-list-item>
-                <v-list-item link to>Политика конфиденциальности</v-list-item>
+                <v-list-item href="tel:+88007774967">
+                  <v-list-item-icon>
+                    <v-icon>
+                      {{ icons.phone }}
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content> 8 (800) 777-49-67 </v-list-item-content>
+                </v-list-item>
+                <v-list-item disabled>
+                  <v-list-item-icon>
+                    <v-icon>
+                      {{ icons.clock }}
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    пн-пт 10:00–19:00;<br />
+                    сб 10:00–15:00;
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item disabled>
+                  <v-list-item-icon>
+                    <v-icon>
+                      {{ icons.marker }}
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    Балтийская, Нарвская, Фрунзенская Михайловский пер., 7А,
+                    лит.В
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item href="mailto:info@xansa.ru">
+                  <v-list-item-icon>
+                    <v-icon>
+                      {{ icons.envelope }}
+                    </v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content> info@xansa.ru </v-list-item-content>
+                </v-list-item>
               </v-list-item-group>
             </v-list>
           </v-col>
@@ -126,10 +156,23 @@
 </template>
 
 <script>
+import {
+  mdiMapMarker,
+  mdiPhone,
+  mdiClockOutline,
+  mdiEmailFastOutline,
+} from "@mdi/js";
+
 export default {
   data() {
     return {
       selected: "",
+      icons: {
+        phone: mdiPhone,
+        clock: mdiClockOutline,
+        marker: mdiMapMarker,
+        envelope: mdiEmailFastOutline,
+      },
     };
   },
 };

@@ -1,22 +1,32 @@
 <template>
-  <v-card class="product-card" max-width="320px">
-    <v-avatar width="320" height="250" tile>
+  <!-- <v-card class="product-card" max-width="320px"> -->
+  <v-card class="product-card" max-width="100%">
+    <v-avatar width="100%" height="240" tile>
       <v-img
         :src="product.image.url"
         :alt="product.image.alt"
         contain
-        max-height="230"
+        max-height="200"
       ></v-img>
     </v-avatar>
-    <v-card-title>
-      <nuxt-link to active-class="product-card__link-active" exact-active-class="product-card__link-exact">
+    <v-card-title class="d-flex justify-space-between">
+      <nuxt-link
+        to="/product"
+        active-class="product-card__link-active"
+        exact-active-class="product-card__link-exact"
+      >
         {{ product.title }}
       </nuxt-link>
+      <v-btn icon @click="onScalesClick" style="z-index: 10">
+        <v-icon>
+          {{ icons.scales }}
+        </v-icon>
+      </v-btn>
     </v-card-title>
     <v-card-text>
-      <div class="d-flex justify-space-between">
-        <p>{{ dimensions }}</p>
-        <p>{{ materials }}</p>
+      <div class="text-nowrap">
+        <p>Габариты: {{ dimensions }}</p>
+        <p>Материалы: {{ materials }}</p>
       </div>
       <div class="d-flex justify-space-between align-end">
         <v-rating
@@ -31,23 +41,37 @@
           readonly
         ></v-rating>
         <div class="grey--text">{{ product.rating }}</div>
-        <div class="grey--text">
-          {{ product.feedbacks.length }} отзывов
-        </div>
+        <div class="grey--text">{{ product.feedbacks.length }} отзывов</div>
       </div>
     </v-card-text>
     <v-divider></v-divider>
     <v-card-actions class="justify-space-between">
       <h6 class="text-h6">от {{ product.price }}</h6>
       <div>
-        <v-btn icon>
-          <v-icon>
-            {{ icons.scales }}
+        <v-btn
+          @click="onStorageBtnClick('cart')"
+          :icon="!inCart"
+          :color="inCart ? 'orange' : ''"
+          :fab="inCart"
+          elevation="0"
+          width="40"
+          height="40"
+        >
+          <v-icon :small="inCart">
+            {{ inCart ? icons.cartFilled : icons.cart }}
           </v-icon>
         </v-btn>
-        <v-btn icon>
-          <v-icon>
-            {{ icons.heart }}
+        <v-btn
+          @click="onStorageBtnClick('favorites')"
+          :icon="!inFavorites"
+          :color="inFavorites ? 'primary' : ''"
+          :fab="inFavorites"
+          elevation="0"
+          width="40"
+          height="40"
+        >
+          <v-icon :small="inFavorites">
+            {{ inFavorites ? icons.heartFilled : icons.heart }}
           </v-icon>
         </v-btn>
       </div>
@@ -61,18 +85,17 @@ import {
   mdiStar,
   mdiStarHalfFull,
   mdiScaleUnbalanced,
-  mdiHeart,
   mdiHeartOutline,
+  mdiHeart,
+  mdiCartOutline,
+  mdiCart,
 } from "@mdi/js";
+
 export default {
-  components: {
-    mdiStarOutline,
-    mdiStar,
-    mdiStarHalfFull,
-    mdiScaleUnbalanced,
-    mdiHeartOutline,
-  },
   props: ["product"],
+  mounted() {
+    console.log(this.product)
+  },
   data() {
     return {
       icons: {
@@ -81,6 +104,9 @@ export default {
         full: mdiStar,
         scales: mdiScaleUnbalanced,
         heart: mdiHeartOutline,
+        heartFilled: mdiHeart,
+        cart: mdiCartOutline,
+        cartFilled: mdiCart,
       },
     };
   },
@@ -94,7 +120,43 @@ export default {
     rating() {
       return parseFloat(this.product.rating);
     },
+    inCart() {
+      return this.$store.state.storage.cart
+        .map((item) => item.id)
+        .includes(this.product.id);
+    },
+    inFavorites() {
+      return this.$store.state.storage.favorites
+        .map((item) => item.id)
+        .includes(this.product.id);
+    },
+    // cart() {
+    //   return this.$store.state.cart
+    // },
+    // favorites() {
+    //   return this.$store.state.favorites
+    // }
   },
+  methods: {
+    onStorageBtnClick(storageName) {
+      // this.inCart = !this.inCart
+      const exists = storageName === 'cart' ? this.inCart : this.inFavorites
+      
+      if (exists) {
+        return this.$store.commit("storage/DELETE", {
+          storageName,
+          product: this.product,
+        });
+      }
+
+      this.$store.commit("storage/ADD", { storageName, product: this.product });
+    },
+    onScalesClick() {
+      console.log("scales!");
+    },
+  },
+  // computed: {
+  // }
 };
 </script>
 
@@ -103,14 +165,12 @@ a {
   color: inherit;
   text-decoration: none;
 }
-/* .product-card__link-active {
 
+.text-nowrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
-
-.product-card__link-exact {
-
-} */
-/* .product-card {
-  width: 300px;
-} */
 </style>
