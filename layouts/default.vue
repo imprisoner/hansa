@@ -26,22 +26,20 @@
       </v-app-bar-nav-icon>
       <p class="text-h4 logo-text ml-4">Ханса-Мебель</p>
       <v-spacer />
-      <v-autocomplete
-        dense
-        :search-input.sync="location"
-        :append-outer-icon="icons.search"
-        outlined
-        flat
-        shrink-on-scroll
-        cache-items
-        label="Поиск"
-        hide-details
-        solo
-      ></v-autocomplete>
+      <ui-search></ui-search>
       <v-spacer />
+      <div class="d-flex align-center justify-center">
+        <v-icon color="success">
+          {{ icons.location }}
+        </v-icon>
+        <span class="text-heading-6 success--text ml-2">Санкт-Петербург</span>
+      </div>
       <v-spacer />
       <div>
-        <v-btn icon to="/favorites">
+        <v-btn icon class="mr-2">
+          <v-icon x-large>{{ icons.phoneOutlined }}</v-icon>
+        </v-btn>
+        <v-btn icon to="/favorites" class="mr-2">
           <v-icon x-large>{{ icons.heart }}</v-icon>
         </v-btn>
         <v-menu open-on-hover bottom offset-y>
@@ -63,7 +61,7 @@
           <v-list max-height="400px" style="overflow-y: scroll">
             <v-list-item-group>
               <template v-for="(item, i) in cart">
-                <v-list-item :key="item.id" nuxt :to="`/product/${item.id}`" active-class="none" >
+                <v-list-item :key="item.id" inactive>
                   <v-list-item-avatar tile height="80" width="80">
                     <v-img
                       :src="item.image.url"
@@ -98,12 +96,72 @@
       <template v-slot:extension>
         <div class="container">
           <div class="row">
-            <div class="d-flex align-center justify-center ml-auto">
-              <v-icon>
+            <v-dialog v-model="dialog" max-width="500px">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="primary" dark v-on="on" v-bind="attrs">
+                  <v-icon>
+                    {{ icons.email }}
+                  </v-icon>
+                  <span class="ml-2"> Связаться с нами </span>
+                </v-btn>
+              </template>
+              <!-- <v-row> -->
+              <!-- <v-col cols="12" class="mx-auto"> -->
+              <v-card>
+                <v-btn icon absolute right top @click="dialog = !dialog">
+                  <v-icon>
+                    {{ icons.close }}
+                  </v-icon>
+                </v-btn>
+                <v-card-title class="text-h5 font-weight-bold justify-center"
+                  >Оставьте заявку</v-card-title
+                >
+                <v-card-actions>
+                  <v-form class="flex-grow-1 pb-4">
+                    <v-divider class="mb-6"></v-divider>
+                    <v-text-field
+                      label="Ваше имя"
+                      outlined
+                      dense
+                    ></v-text-field>
+                    <div class="d-flex justify-content-between flex-column">
+                      <v-text-field label="Почта" outlined dense></v-text-field>
+                      <!-- <span
+                          class="
+                            text-body-2
+                            align-self-center
+                            mb-6
+                            text-uppercase
+                          "
+                          >или</span
+                        > -->
+                      <v-text-field
+                        label="Телефон"
+                        outlined
+                        dense
+                      ></v-text-field>
+                    </div>
+                    <v-textarea
+                      label="Ваше сообщение"
+                      outlined
+                      no-resize
+                    ></v-textarea>
+                    <v-divider class="mb-6"></v-divider>
+                    <v-btn block color="success" @click="sendRequest"
+                      >Отправить</v-btn
+                    >
+                  </v-form>
+                </v-card-actions>
+              </v-card>
+              <!-- </v-col> -->
+              <!-- </v-row> -->
+            </v-dialog>
+            <!-- <div class="d-flex align-center justify-center ml-auto">
+              <v-icon color="success">
                 {{ icons.location }}
               </v-icon>
-              <span class="text-heading-6 ml-2">Санкт-Петербург</span>
-            </div>
+              <span class="text-heading-6 success--text ml-2">Санкт-Петербург</span>
+            </div> -->
           </div>
         </div>
       </template>
@@ -122,6 +180,11 @@
     <v-footer absolute dark>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
+    <!-- <v-btn fab right fixed bottom large color="primary" class="ma-8">
+      <v-icon>
+        {{ icons.phone }}
+      </v-icon>
+    </v-btn> -->
   </v-app>
 </template>
 
@@ -134,22 +197,28 @@ import {
   mdiNewspaperVariantMultipleOutline,
   mdiHeartOutline,
   mdiCartOutline,
-  mdiSearchWeb,
   mdiMenu,
   mdiMapMarker,
+  mdiPhone,
+  mdiEmailFastOutline,
+  mdiPhoneOutline,
+  mdiClose,
 } from "@mdi/js";
-
 
 export default {
   name: "DefaultLayout",
   data() {
     return {
+      dialog: false,
       icons: {
         cart: mdiCartOutline,
         heart: mdiHeartOutline,
-        search: mdiSearchWeb,
         burger: mdiMenu,
         location: mdiMapMarker,
+        phone: mdiPhone,
+        phoneOutlined: mdiPhoneOutline,
+        email: mdiEmailFastOutline,
+        close: mdiClose,
       },
       items: [
         {
@@ -210,6 +279,9 @@ export default {
         await this.$store.dispatch("storage/getAll", { storageName, idList });
         return;
       }
+    },
+    sendRequest() {
+      // TODO sending logic
     },
   },
   computed: {

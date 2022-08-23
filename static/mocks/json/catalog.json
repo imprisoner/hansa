@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Шкаф купе",
+    "title": "Шкаф купе 1",
     "category": {
       "title": "closets",
       "id": 1
@@ -16,7 +16,7 @@
       "Алюминий"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 800,
     "feedbacks": [
       {
         "id": 1
@@ -63,7 +63,7 @@
   },
   {
     "id": 2,
-    "title": "Шкаф купе",
+    "title": "Шкаф купе 2",
     "category": {
       "title": "closets",
       "id": 1
@@ -78,7 +78,7 @@
       "Сталь"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 4850,
     "feedbacks": [
       {
         "id": 1
@@ -140,7 +140,7 @@
       "Хром"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 2500,
     "feedbacks": [
       {
         "id": 1
@@ -198,11 +198,11 @@
       240
     ],
     "materials": [
-      "Черное дерево",
+      "Чёрное дерево",
       "Алюминий"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 7720,
     "feedbacks": [
       {
         "id": 1
@@ -264,7 +264,7 @@
       "Латунь"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 8200,
     "feedbacks": [
       {
         "id": 1
@@ -326,7 +326,7 @@
       "Сталь"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 6000,
     "feedbacks": [
       {
         "id": 1
@@ -388,7 +388,7 @@
       "Бронза"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 9500,
     "feedbacks": [
       {
         "id": 1
@@ -450,7 +450,7 @@
       "Хром"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 7600,
     "feedbacks": [
       {
         "id": 1
@@ -512,7 +512,7 @@
       "Хром"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 500,
     "feedbacks": [
       {
         "id": 1
@@ -574,7 +574,7 @@
       "Бронза"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 3800,
     "feedbacks": [
       {
         "id": 1
@@ -636,7 +636,7 @@
       "Латунь"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 7500,
     "feedbacks": [
       {
         "id": 1
@@ -698,7 +698,7 @@
       "Алюминий"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 9999,
     "feedbacks": [
       {
         "id": 1
@@ -760,7 +760,7 @@
       "Латунь"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 1800,
     "feedbacks": [
       {
         "id": 1
@@ -822,7 +822,7 @@
       "Дюраль"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 8000,
     "feedbacks": [
       {
         "id": 1
@@ -884,7 +884,7 @@
       "Алюминий"
     ],
     "rating": 3.6,
-    "price": 70719,
+    "price": 4700,
     "feedbacks": [
       {
         "id": 1

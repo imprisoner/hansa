@@ -64,7 +64,7 @@
             <v-card>
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div>
-                  <nuxt-link :to="`/category/${cat.id}`">
+                  <nuxt-link :to="`/catalog/${cat.id}`">
                     <v-card-title> {{ cat.title }} </v-card-title>
                   </nuxt-link>
                   <v-divider></v-divider>
