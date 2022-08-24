@@ -18,13 +18,22 @@
   >
     <template v-slot:item="data">
       <template>
-        <v-list-item-avatar tile>
-          <v-img contain :src="data.item.image.url" />
-        </v-list-item-avatar>
-        <v-list-item-content>
-          <v-list-item-title v-html="data.item.title"></v-list-item-title>
-          <v-list-item-subtitle v-html="data.item.price"></v-list-item-subtitle>
-        </v-list-item-content>
+        <nuxt-link :to="`${data.item.id}`">
+          <v-list-item dense>
+            <v-list-item-avatar tile>
+              <v-img contain :src="data.item.image.url" />
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title
+                v-html="data.item.title"
+                class="item__title"
+              ></v-list-item-title>
+              <v-list-item-subtitle
+                v-html="data.item.price"
+              ></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </nuxt-link>
       </template>
     </template>
   </v-autocomplete>
@@ -66,11 +75,21 @@ export default {
       }, 500);
     },
     onInput() {
-      console.log('search input')
-    }
+      console.log("search input");
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+.item__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>

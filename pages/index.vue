@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section style="background: url(/images/index/bg.jpg)" class="white--text">
+    <section style="background: url(/images/index/bg.webp)" class="white--text">
       <v-container class="py-12">
         <v-row class="mb-8">
           <v-col cols="7">
@@ -21,7 +21,7 @@
             </p>
           </v-col>
           <v-col cols="5">
-            <v-img max-height="380" src="/images/index/image.png"></v-img>
+            <v-img max-height="380" src="/images/index/image.webp"></v-img>
           </v-col>
           <v-col cols="12">
             <v-btn color="orange text-white">Подробнее</v-btn>
@@ -116,7 +116,7 @@
       </v-container>
     </section>
     <section
-      style="background: url(/images/index/new-bg.jpg)"
+      style="background: url(/images/index/new-bg.webp)"
       class="white--text"
     >
       <v-container>

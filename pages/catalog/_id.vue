@@ -3,7 +3,7 @@
     <v-row cols="12">
       <v-breadcrumbs :items="breadcrumbs" large>
         <template v-slot:item="{ item }">
-          <v-breadcrumbs-item :disabled="item.disabled" nuxt :href="item.href">
+          <v-breadcrumbs-item :disabled="item.disabled" nuxt :to="item.href">
             {{ item.text.toUpperCase() }}
           </v-breadcrumbs-item>
         </template>

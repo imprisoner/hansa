@@ -15,112 +15,32 @@
         </v-breadcrumbs>
       </v-col>
     </v-row>
-    <v-row class="product-views mb-8">
+    <v-row class="product-views mb-8" v-if="product">
       <v-col cols="6" tag="section">
         <div class="product-slider swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide-active">
+            <div class="swiper-slide swiper-slide-active" v-for="i in 5" :key="i">
               <v-img
                 max-height="100%"
                 contain
-                src="/images/products/kitchen.jpg"
-                alt="Картинка"
-              />
-            </div>
-            <div
-              class="
-                images-product__slide-ibg_contain
-                swiper-slide swiper-slide-next
-              "
-            >
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
-              />
-            </div>
-            <div class="images-product__slide-ibg_contain swiper-slide">
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
-              />
-            </div>
-            <div
-              class="
-                images-product__slide-ibg
-                images-thumbs__slide-ibg_contain
-                swiper-slide
-              "
-            >
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
-              />
-            </div>
-            <div class="images-product__slide-ibg_contain swiper-slide">
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
+                :src="product.image.url"
+                :alt="product.image.alt"
               />
             </div>
           </div>
+            <!--  -->
         </div>
-        <div class="product-slider__thumbs swiper" thumbsSlider="">
+        <div class="product-slider__thumbs swiper" thumbsSlider>
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class="swiper-slide" v-for="i in 5" :key="i+5">
               <v-img
                 max-height="100%"
                 contain
-                src="/images/products/kitchen.jpg"
-                alt="Картинка"
+                :src="product.image.url"
+                :alt="product.image.alt"
               />
             </div>
-            <div class="swiper-slide swiper-slide-prev">
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
-              />
-            </div>
-            <div class="swiper-slide swiper-slide-visible swiper-slide-active">
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
-              />
-            </div>
-            <div
-              class="
-                swiper-slide
-                swiper-slide-visible
-                swiper-slide-next
-                swiper-slide-thumb-active
-              "
-            >
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
-              />
-            </div>
-            <div class="swiper-slide swiper-slide-visible">
-              <v-img
-                max-height="100%"
-                contain
-                src="/images/products/closet.jpg"
-                alt="Картинка"
-              />
-            </div>
+            <!--  -->
           </div>
         </div>
       </v-col>
@@ -170,25 +90,25 @@
             <v-row>
               <v-col cols="3"><p class="grey--text">Артикул:</p></v-col>
               <v-col cols="9"
-                ><p>{{ product.art }}</p></v-col
+                ><p>{{ product.vendor_code }}</p></v-col
               >
             </v-row>
             <v-row>
               <v-col cols="3"><p class="grey--text">Материал:</p></v-col>
               <v-col cols="9"
-                ><p>{{ product.materials }}</p></v-col
+                ><p>{{ product.materials.join(', ') }}</p></v-col
               >
             </v-row>
             <v-row>
               <v-col cols="3"><p class="grey--text">Размер:</p></v-col>
               <v-col cols="9"
-                ><p>{{ product.dimensions }}</p></v-col
+                ><p>{{ product.dimensions.join('x') }}</p></v-col
               >
             </v-row>
             <v-row>
               <v-col cols="3"><p class="grey--text">Цвет:</p></v-col>
               <v-col cols="9"
-                ><p>{{ product.color }}</p></v-col
+                ><p>{{ product.color.join(', ') }}</p></v-col
               >
             </v-row>
           </v-card-text>
@@ -287,16 +207,17 @@ export default {
           href: "#",
         },
       ],
-      product: {
-        title: "Встроенный шкаф купе",
-        rating: 3.6,
-        art: "AF0000001952",
-        materials: "ЛДСП",
-        dimensions: "Ширина 140 см / Глубина 60 см / Высота 240 см",
-        color: "Дуб ирландский",
-        description: "Пункт №1",
-        price: "33 865",
-      },
+      product: null,
+      // product: {
+      //   title: "Встроенный шкаф купе",
+      //   rating: 3.6,
+      //   art: "AF0000001952",
+      //   materials: "ЛДСП",
+      //   dimensions: "Ширина 140 см / Глубина 60 см / Высота 240 см",
+      //   color: "Дуб ирландский",
+      //   description: "Пункт №1",
+      //   price: "33 865",
+      // },
       tabsContent: [
         {
           title: "Tab 1 content",
@@ -315,11 +236,14 @@ export default {
     };
   },
   async mounted() {
+    // mocking request
     if (!this.catalog.length) {
       await this.$store.dispatch("catalog/getCatalog");
     }
-
-    this.sliders = {
+    this.product = this.catalog.find(product => product.id === this.$route.params.id)
+    // 
+    this.$nextTick(() => {
+      this.sliders = {
       main: null,
       thumbs: null,
     };
@@ -340,6 +264,8 @@ export default {
       },
       modules: [this.$swiperModules.Autoplay, this.$swiperModules.Thumbs],
     });
+    })
+    
   },
   methods: {
     onScalesClick() {},

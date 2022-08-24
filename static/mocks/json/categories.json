@@ -17,7 +17,7 @@
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/categories/closet.webp",
       "alt": ""
     }
   },
@@ -39,7 +39,7 @@
       }
     ],
     "image": {
-      "url": "/images/products/kitchen.jpg",
+      "url": "/images/categories/kitchen.webp",
       "alt": ""
     }
   },
@@ -61,7 +61,7 @@
       }
     ],
     "image": {
-      "url": "/images/products/soft.jpg",
+      "url": "/images/categories/soft.webp",
       "alt": ""
     }
   },
@@ -83,7 +83,7 @@
       }
     ],
     "image": {
-      "url": "/images/products/stand.jpg",
+      "url": "/images/categories/stand.webp",
       "alt": ""
     }
   },
@@ -105,7 +105,7 @@
       }
     ],
     "image": {
-      "url": "/images/products/accessories.jpg",
+      "url": "/images/categories/accessories.webp",
       "alt": ""
     }
   },

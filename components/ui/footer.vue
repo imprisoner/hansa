@@ -187,7 +187,7 @@ export default {
 .ui-footer__about {
   padding-top: 40px;
   padding-bottom: 20px;
-  background: url(/images/footer/bg.jpg) top/cover no-repeat;
+  background: url(/images/footer/bg.webp) top/cover no-repeat;
 }
 
 .ui-footer__about h5 {

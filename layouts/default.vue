@@ -24,17 +24,66 @@
           {{ icons.burger }}
         </v-icon>
       </v-app-bar-nav-icon>
-      <p class="text-h4 logo-text ml-4">Ханса-Мебель</p>
+
       <v-spacer />
       <ui-search></ui-search>
       <v-spacer />
       <div class="d-flex align-center justify-center">
-        <v-icon color="success">
+        <v-icon color="amber">
           {{ icons.location }}
         </v-icon>
-        <span class="text-heading-6 success--text ml-2">Санкт-Петербург</span>
+        <span class="text-heading-6 ml-2">Санкт-Петербург</span>
       </div>
       <v-spacer />
+      <v-dialog v-model="dialog" max-width="500px">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn text x-large color="white" dark v-on="on" v-bind="attrs">
+            <!-- <v-icon>
+                {{ icons.email }}
+              </v-icon> -->
+            <span> Заказать звонок </span>
+          </v-btn>
+        </template>
+
+        <v-card>
+          <v-btn icon absolute right top @click="dialog = !dialog">
+            <v-icon>
+              {{ icons.close }}
+            </v-icon>
+          </v-btn>
+          <v-card-title class="text-h5 font-weight-bold justify-center"
+            >Оставьте заявку</v-card-title
+          >
+          <v-card-actions>
+            <v-form class="flex-grow-1 pb-4">
+              <v-divider class="mb-6"></v-divider>
+              <v-text-field label="Ваше имя" outlined dense></v-text-field>
+              <div class="d-flex justify-content-between flex-column">
+                <v-text-field label="Почта" outlined dense></v-text-field>
+                <!-- <span
+                          class="
+                            text-body-2
+                            align-self-center
+                            mb-6
+                            text-uppercase
+                          "
+                          >или</span
+                        > -->
+                <v-text-field label="Телефон" outlined dense></v-text-field>
+              </div>
+              <v-textarea
+                label="Ваше сообщение"
+                outlined
+                no-resize
+              ></v-textarea>
+              <v-divider class="mb-6"></v-divider>
+              <v-btn block color="success" @click="sendRequest"
+                >Отправить</v-btn
+              >
+            </v-form>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <div>
         <v-btn icon class="mr-2">
           <v-icon x-large>{{ icons.phoneOutlined }}</v-icon>
@@ -94,76 +143,9 @@
         </v-menu>
       </div>
       <template v-slot:extension>
-        <div class="container">
-          <div class="row">
-            <v-dialog v-model="dialog" max-width="500px">
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn color="primary" dark v-on="on" v-bind="attrs">
-                  <v-icon>
-                    {{ icons.email }}
-                  </v-icon>
-                  <span class="ml-2"> Связаться с нами </span>
-                </v-btn>
-              </template>
-              <!-- <v-row> -->
-              <!-- <v-col cols="12" class="mx-auto"> -->
-              <v-card>
-                <v-btn icon absolute right top @click="dialog = !dialog">
-                  <v-icon>
-                    {{ icons.close }}
-                  </v-icon>
-                </v-btn>
-                <v-card-title class="text-h5 font-weight-bold justify-center"
-                  >Оставьте заявку</v-card-title
-                >
-                <v-card-actions>
-                  <v-form class="flex-grow-1 pb-4">
-                    <v-divider class="mb-6"></v-divider>
-                    <v-text-field
-                      label="Ваше имя"
-                      outlined
-                      dense
-                    ></v-text-field>
-                    <div class="d-flex justify-content-between flex-column">
-                      <v-text-field label="Почта" outlined dense></v-text-field>
-                      <!-- <span
-                          class="
-                            text-body-2
-                            align-self-center
-                            mb-6
-                            text-uppercase
-                          "
-                          >или</span
-                        > -->
-                      <v-text-field
-                        label="Телефон"
-                        outlined
-                        dense
-                      ></v-text-field>
-                    </div>
-                    <v-textarea
-                      label="Ваше сообщение"
-                      outlined
-                      no-resize
-                    ></v-textarea>
-                    <v-divider class="mb-6"></v-divider>
-                    <v-btn block color="success" @click="sendRequest"
-                      >Отправить</v-btn
-                    >
-                  </v-form>
-                </v-card-actions>
-              </v-card>
-              <!-- </v-col> -->
-              <!-- </v-row> -->
-            </v-dialog>
-            <!-- <div class="d-flex align-center justify-center ml-auto">
-              <v-icon color="success">
-                {{ icons.location }}
-              </v-icon>
-              <span class="text-heading-6 success--text ml-2">Санкт-Петербург</span>
-            </div> -->
-          </div>
-        </div>
+        <nuxt-link to="/" class="text-h4 logo-text ml-16 grey--text text--lighten-1">
+          Ханса-Мебель
+        </nuxt-link>
       </template>
     </v-app-bar>
     <v-main>
@@ -296,7 +278,7 @@ export default {
 </script>
 
 <style>
-.v-application p.logo-text {
-  margin-bottom: unset;
+.v-application .logo-text {
+  text-decoration: none;
 }
 </style>

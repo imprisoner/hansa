@@ -1,10 +1,10 @@
 [
   {
-    "id": 1,
-    "title": "Шкаф купе 1",
+    "id": "1",
+    "title": "Дакота Шкаф-купе 2-х дверный",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -19,54 +19,58 @@
     "price": 800,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_1.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "1681804",
+    "in_stock": 5,
+    "discount": 0,
+    "color": ["Чёрный"]
   },
   {
-    "id": 2,
-    "title": "Шкаф купе 2",
+    "id": "2",
+    "title": "Шкаф-Купе 3-х Створчатый c Ящиками ЛДСП",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -81,54 +85,58 @@
     "price": 4850,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_2.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "231804",
+    "in_stock": 12,
+    "discount": 5,
+    "color": ["Чёрный", "Серый"]
   },
   {
-    "id": 3,
-    "title": "Шкаф купе",
+    "id": "3",
+    "title": "Пифагор Шкаф-Купе",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -143,54 +151,58 @@
     "price": 2500,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_3.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "239991804",
+    "in_stock": 11,
+    "discount": 5,
+    "color": ["Чёрный"]
   },
   {
-    "id": 4,
-    "title": "Шкаф купе",
+    "id": "4",
+    "title": "Шкаф купе Винтаж",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -205,54 +217,58 @@
     "price": 7720,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_4.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "1090231804",
+    "in_stock": 4,
+    "discount": 2,
+    "color": ["Белый", "Серый"]
   },
   {
-    "id": 5,
-    "title": "Шкаф купе",
+    "id": "5",
+    "title": "Шкаф-Купе 4-х Створчатый Витраж",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -267,54 +283,58 @@
     "price": 8200,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_5.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "1685453604",
+    "in_stock": 3,
+    "discount": 5,
+    "color": ["Белый"]
   },
   {
-    "id": 6,
-    "title": "Шкаф купе",
+    "id": "6",
+    "title": "Шкаф-Купе Люмьер-2",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -329,54 +349,58 @@
     "price": 6000,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_6.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "76898704",
+    "in_stock": 5,
+    "discount": 10,
+    "color": ["Белый", "Серый"]
   },
   {
-    "id": 7,
-    "title": "Шкаф купе",
+    "id": "7",
+    "title": "Шкаф-Купе Комфорт-12",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -391,54 +415,58 @@
     "price": 9500,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_7.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "763453498704",
+    "in_stock": 30,
+    "discount": 8,
+    "color": ["Белый", "Чёрный"]
   },
   {
-    "id": 8,
-    "title": "Шкаф купе",
+    "id": "8",
+    "title": "Шкаф-Купе Комфорт-4",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -453,54 +481,58 @@
     "price": 7600,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_8.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "1010898704",
+    "in_stock": 2,
+    "discount": 5,
+    "color": ["Металлик", "Серый"]
   },
   {
-    "id": 9,
-    "title": "Шкаф купе",
+    "id": "9",
+    "title": "Шкаф-Купе Магнат №1",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -515,54 +547,58 @@
     "price": 500,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_9.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "19017850093",
+    "in_stock": 7,
+    "discount": 15,
+    "color": ["Чёрный", "Бежевый"]
   },
   {
-    "id": 10,
-    "title": "Шкаф купе",
+    "id": "10",
+    "title": "Шкаф-Купе Альба-8",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -577,54 +613,58 @@
     "price": 3800,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_10.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "98704768",
+    "in_stock": 70,
+    "discount": 25,
+    "color": ["Серый"]
   },
   {
-    "id": 11,
-    "title": "Шкаф купе",
+    "id": "11",
+    "title": "Шкаф-Купе Фиджи",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -639,54 +679,58 @@
     "price": 7500,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_11.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "12344768",
+    "in_stock": 34,
+    "discount": 2,
+    "color": ["Серый"]
   },
   {
-    "id": 12,
-    "title": "Шкаф купе",
+    "id": "12",
+    "title": "Шкаф-Купе Вашингтон",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -701,54 +745,58 @@
     "price": 9999,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_12.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "104768",
+    "in_stock": 10,
+    "discount": 0,
+    "color": ["Серый"]
   },
   {
-    "id": 13,
-    "title": "Шкаф купе",
+    "id": "13",
+    "title": "Шкаф-Купе Неаполь Серый",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -763,54 +811,58 @@
     "price": 1800,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_13.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "999610768",
+    "in_stock": 1,
+    "discount": 0,
+    "color": ["Серый"]
   },
   {
-    "id": 14,
-    "title": "Шкаф купе",
+    "id": "14",
+    "title": "Шкаф-купе Бэст 4 BMS",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -825,54 +877,58 @@
     "price": 8000,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_14.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "35604138",
+    "in_stock": 13,
+    "discount": 0,
+    "color": ["Серый"]
   },
   {
-    "id": 15,
-    "title": "Шкаф купе",
+    "id": "15",
+    "title": "Шкаф-Купе 3-х Створчатый Тиффани",
     "category": {
       "title": "closets",
-      "id": 1
+      "id": "1"
     },
     "dimensions": [
       80,
@@ -887,46 +943,50 @@
     "price": 4700,
     "feedbacks": [
       {
-        "id": 1
+        "id": "1"
       },
       {
-        "id": 2
+        "id": "2"
       },
       {
-        "id": 3
+        "id": "3"
       },
       {
-        "id": 4
+        "id": "4"
       },
       {
-        "id": 5
+        "id": "5"
       },
       {
-        "id": 6
+        "id": "6"
       },
       {
-        "id": 7
+        "id": "7"
       },
       {
-        "id": 8
+        "id": "8"
       },
       {
-        "id": 9
+        "id": "9"
       },
       {
-        "id": 10
+        "id": "10"
       },
       {
-        "id": 11
+        "id": "11"
       },
       {
-        "id": 12
+        "id": "12"
       }
     ],
     "image": {
-      "url": "/images/products/closet.jpg",
+      "url": "/images/products/closets/closet_15.webp",
       "alt": ""
     },
-    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни."
+    "description": "Шкаф-купе Бэст 4 BMS поможет дополнить интерьер спальни.",
+    "vendor_code": "11234433218",
+    "in_stock": 10,
+    "discount": 3,
+    "color": ["Серый"]
   }
 ]
