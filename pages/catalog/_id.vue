@@ -158,12 +158,6 @@ export default {
           : true;
         return inPriceRange && hasMaterials;
       });
-      // if (!this.filters.materials.length) return this.localCatalog;
-      // return this.localCatalog.filter((product) => {
-      //   return product.materials.some((item) =>
-      //     this.filters.materials.includes(item)
-      //   );
-      // });
     },
     materialsSet() {
       const arr = this.localCatalog.map((product) => product.materials).flat();

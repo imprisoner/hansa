@@ -7,5 +7,5 @@ export default {
 }
 
 function filterCardItems(data, payload) {
-  return data.filter(item => payload.idList.includes(item.id))
+  return data.filter(item => payload.list.map(item => item.id).includes(item.id))
 }

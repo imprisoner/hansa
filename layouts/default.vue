@@ -38,9 +38,6 @@
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn text x-large color="white" dark v-on="on" v-bind="attrs">
-            <!-- <v-icon>
-                {{ icons.email }}
-              </v-icon> -->
             <span> Заказать звонок </span>
           </v-btn>
         </template>
@@ -57,27 +54,19 @@
           <v-card-actions>
             <v-form class="flex-grow-1 pb-4">
               <v-divider class="mb-6"></v-divider>
-              <v-text-field label="Ваше имя" outlined dense></v-text-field>
+              <v-text-field v-model="form.name" label="Ваше имя" outlined dense></v-text-field>
               <div class="d-flex justify-content-between flex-column">
-                <v-text-field label="Почта" outlined dense></v-text-field>
-                <!-- <span
-                          class="
-                            text-body-2
-                            align-self-center
-                            mb-6
-                            text-uppercase
-                          "
-                          >или</span
-                        > -->
-                <v-text-field label="Телефон" outlined dense></v-text-field>
+                <v-text-field v-model="form.email" label="Почта" outlined dense/>
+                <v-text-field v-model="form.phone" label="Телефон" outlined dense/>
               </div>
               <v-textarea
+              v-model="form.message"
                 label="Ваше сообщение"
                 outlined
                 no-resize
-              ></v-textarea>
+              />
               <v-divider class="mb-6"></v-divider>
-              <v-btn block color="success" @click="sendRequest"
+              <v-btn @click="onSubmit" block color="success"
                 >Отправить</v-btn
               >
             </v-form>
@@ -162,11 +151,6 @@
     <v-footer absolute dark>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
-    <!-- <v-btn fab right fixed bottom large color="primary" class="ma-8">
-      <v-icon>
-        {{ icons.phone }}
-      </v-icon>
-    </v-btn> -->
   </v-app>
 </template>
 
@@ -241,6 +225,12 @@ export default {
       drawer: false,
       location: null,
       search: "",
+      form: {
+        name: '',
+        phone: '',
+        email: '',
+        message: ''
+      }
     };
   },
   async mounted() {
@@ -253,18 +243,23 @@ export default {
   },
   methods: {
     async initStorage(storageName) {
-      const idList = window.localStorage.getItem(storageName);
-      if (!idList) {
+      const list = JSON.parse(window.localStorage.getItem(storageName));
+      if (!list) {
         return window.localStorage.setItem(storageName, JSON.stringify([]));
       }
-      if (idList.length) {
-        await this.$store.dispatch("storage/getAll", { storageName, idList });
+      if (list.length) {
+        console.log()
+        await this.$store.dispatch("storage/getAll", { storageName, list });
         return;
       }
     },
-    sendRequest() {
-      // TODO sending logic
-    },
+    onSubmit(e) {
+      console.log(e)
+      e.preventDefault()
+      this.$axios.$post('/api/notify/callback', {...this.form}).then(() => {
+        this.dialog = false
+      })
+    }
   },
   computed: {
     cart() {

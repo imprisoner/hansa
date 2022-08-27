@@ -6,10 +6,48 @@
       </v-col>
     </v-row>
     <v-row v-if="cart.length">
-      <v-col cols="4" v-for="(product, i) in cart" :key="i">
-        <product-card :product="product" />
+      <v-col cols="8" class="items-area">
+        <cart-item
+          v-for="product in cart"
+          :key="product.id"
+          :product="product"
+        />
+      </v-col>
+      <v-row></v-row>
+      <v-col cols="4">
+        <v-sheet elevation="4" rounded class="fixed pa-2">
+          <v-card-actions class="align-start">
+            <v-text-field
+              outlined
+              flat
+              dense
+              single-line
+              hide-spin-buttons
+              hint="Введите промокод"
+              persistent-hint
+              class="promo__input"
+              color="black"
+            ></v-text-field>
+            <v-btn height="40" dark color="black" depressed class="promo__btn"
+              >Подтвердить</v-btn
+            >
+          </v-card-actions>
+          <v-subheader class="d-flex justify-space-between"><span>Доставка:</span> <span>{{delivery}} ₽</span></v-subheader>
+          <v-subheader class="d-flex justify-space-between red--text text--lighten-1"><span>Скидка:</span> <span>- {{discount}} ₽</span></v-subheader>
+          <v-subheader class="d-flex justify-space-between orange--text text--lighten-1"><span>Промокод:</span> <span>- {{promoDiscount}} ₽</span></v-subheader>
+          <v-subheader class="d-flex justify-space-between"><span>Налог:</span> <span>{{tax}} ₽</span></v-subheader>
+          <v-divider></v-divider>
+          <v-subheader class="d-flex justify-space-between text-subtitle-1 font-weight-medium black--text"
+            ><span>Итого:</span>
+            <span>{{ total }} ₽</span></v-subheader
+          >
+          <v-card-actions>
+            <v-btn block color="success"> К заказу </v-btn>
+          </v-card-actions>
+        </v-sheet>
       </v-col>
     </v-row>
+    <!--  -->
     <v-row v-else>
       <v-col cols="12">
         <h5 class="text-h5">В вашей корзине нет продуктов</h5>
@@ -20,13 +58,50 @@
 
 <script>
 export default {
+  data() {
+    return {
+      promoDiscount: 0,
+      delivery: 0,
+      tax: 0
+    };
+  },
   computed: {
     cart() {
-      return this.$store.state.storage.cart;
+      return this.$store.getters["storage/cartList"];
+    },
+    discount() {
+      return this.$store.getters["storage/cartTotal"] - this.$store.getters["storage/cartEstimatedTotal"]
+    },
+    total() {
+      return this.$store.getters["storage/cartEstimatedTotal"];
+      // return state.cart
+      // .map(product => product.estimatedTotal)
+      // .reduce((acc, val) => acc + val)
     },
   },
+  methods: {},
 };
 </script>
 
-<style>
+<style scoped>
+.items-area {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: calc(100vh - 74px - 48px - 64px);
+  overflow-y: scroll;
+}
+
+.promo__btn {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+}
+
+.promo__input {
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+}
+/* .fixed {
+  position: fixed;
+} */
 </style>

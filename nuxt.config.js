@@ -14,16 +14,28 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic' },
+      // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic' },
       // {rel:"stylesheet", href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  // css: [
-  //   '~/static/fonts.css'
-  // ],
-
+  css: [
+    '~/assets/fonts.css'
+  ],
+  serverMiddleware: [
+    { path: "/api", handler: require("body-parser").json() },
+    {
+      path: "/api",
+      handler: (req, res, next) => {
+        const url = require("url");
+        req.query = url.parse(req.url, true).query;
+        req.params = { ...req.query, ...req.body };
+        next();
+      }
+    },
+    { path: "/api", handler: "~/serverMiddleware/api-server.js" }
+  ],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/swiper.client.js', mode: 'client' }
@@ -42,6 +54,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -74,6 +87,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     analyze: true,
-    extractCSS: true
-  }
+    extractCSS: true,
+  },
+  watch: ['~/api/**/*.js']
 }
