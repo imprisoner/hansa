@@ -13,7 +13,7 @@
     {
       "src": "api/notify/callback",
       "dest": "api/notify.js",
-      "Access-Control-Allow-Method": "*",
+      "Access-Control-Allow-Method": "POST",
       "Access-Control-Allow-Headers": "*"
     }
   ]
