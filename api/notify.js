@@ -1,4 +1,5 @@
-import nodemailer from 'nodemailer'
+// import nodemailer from 'nodemailer'
+const nodemailer = require('nodemailer')
 
 const opts = {
   host: process.env.smtp_host,
@@ -44,4 +45,5 @@ async function subscribe(email) {
 
 }
 
-export { callback, subscribe }
+module.exports = { callback, subscribe }
+// export { callback, subscribe }
