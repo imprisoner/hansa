@@ -5,5 +5,6 @@ module.exports =  async (req, res, next) => {
   const controller = url.slice(1).join('/')
   const api = require('../api/' + controller)
   const result = await api[method](req.params)
+  console.log('result')
   res.end(JSON.stringify(result))
 }
