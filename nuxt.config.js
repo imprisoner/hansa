@@ -34,7 +34,7 @@ export default {
         next();
       }
     },
-    { path: "/api", handler: "~/serverMiddleware/api-server.js" }
+    { path: "/api", handler: "~/server-middleware/api-server.js" }
   ],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
