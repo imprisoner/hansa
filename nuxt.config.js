@@ -89,5 +89,6 @@ export default {
     analyze: true,
     extractCSS: true,
   },
-  watch: ['~/api/**/*.js']
+  watch: ['~/api/**/*.js'],
+  target: 'server'
 }
