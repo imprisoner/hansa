@@ -9,19 +9,8 @@
       }
     },
     {
-      "src": "api/**/*.js",
+      "src": "api/notify.js",
       "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/notify/callback",
-      "dest": "/api/notify.js",
-      "methods": ["POST"],
-      "headers": {
-        "Access-Control-Allow-Methods": "*",
-        "Access-Control-Allow-Headers": "*"
-      }
     }
   ]
 }
