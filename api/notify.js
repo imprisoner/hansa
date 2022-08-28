@@ -19,13 +19,14 @@ async function callback(form = {}) {
       Номер телефона: ${form.phone} \n
       Сообщение: ${form.message} \n
     `
-  transporter.sendMail({
+  const info = await transporter.sendMail({
     sender: process.env.smtp_user,
     from: `Сервис Ханса-Мебель <${process.env.smtp_user}>`,
     to: 'Andy <st8prisoner@gmail.com>',
     subject: 'Заказать звонок',
     text: template
-  }).then(console.log)
+  })
+  return info
 }
 
 async function subscribe(email) {
