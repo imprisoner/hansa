@@ -7,10 +7,6 @@
       "config": {
         "serverFiles": ["server-middleware/**", "api/notify.js"]
       }
-    },
-    {
-      "src": "api/notify.js",
-      "use": "@vercel/node"
     }
   ]
 }
