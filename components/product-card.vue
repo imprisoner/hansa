@@ -9,7 +9,7 @@
         max-height="200"
       ></v-img>
     </v-avatar>
-    <v-card-title class="d-flex justify-space-between product-card__title">
+    <v-card-title class="d-flex justify-space-between product-card__title" >
       <nuxt-link
         :to="`/product/${product.id}`"
         active-class="product-card__link-active"
@@ -170,7 +170,7 @@ a {
 }
 
 .product-card__title a{
-  max-width: 70%;
+  max-width: 80%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

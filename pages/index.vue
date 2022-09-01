@@ -1,16 +1,17 @@
 <template>
   <div>
-    <section style="background: url(/images/index/bg.webp)" class="white--text">
-      <v-container class="py-12">
-        <v-row class="mb-8">
-          <v-col cols="7">
-            <h2 class="text-h4 font-weight-bold mb-4">
-              Мебельный Интернет-Магазин
+    <section class="white--text bg-1">
+      <v-container fluid class="py-12">
+        <v-row>
+          <v-col md="7" cols="12">
+            <h2 class="text-sm-h4 text-h5 font-weight-bold mb-4">
+              Мебельный <br v-if="isMobile" />
+              Интернет-Магазин
             </h2>
-            <h3 class="text-h4 mb-6">
+            <h3 class="text-sm-h4 text-h6 mb-6">
               Кухни на заказ по индивидуальным проектам
             </h3>
-            <p class="text-body-1">
+            <p class="text-body-1 mb-8">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
               asperiores molestias dolorum quod nostrum deleniti id nam porro
               cumque amet, neque vel. Doloribus dicta, provident alias atque
@@ -19,28 +20,29 @@
               deleniti id nam porro cumque amet, neque vel. Doloribus dicta,
               provident alias atque eveniet recusandae quis.
             </p>
-          </v-col>
-          <v-col cols="5">
-            <v-img max-height="380" src="/images/index/image.webp"></v-img>
-          </v-col>
-          <v-col cols="12">
             <v-btn color="orange text-white">Подробнее</v-btn>
+          </v-col>
+          <v-col md="5" cols="12">
+            <v-img
+              :max-height="$vuetify.breakpoint.mdAndUp ? 380 : 'auto'"
+              src="/images/index/image.webp"
+            ></v-img>
           </v-col>
         </v-row>
         <v-row class="text-center">
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="3">
             <v-icon size="64" class="mb-6" color="white">{{
               icons.guarantee
             }}</v-icon>
             <h5 class="text-h6">Гарантия 100% возврата денежных средств</h5>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="3">
             <v-icon size="64" class="mb-6" color="white">{{
               icons.delivery
             }}</v-icon>
             <h5 class="text-h6">Доставка по Санкт-Петербургу и Лен-Области</h5>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="3">
             <v-icon size="64" class="mb-6" color="white">{{
               icons.order
             }}</v-icon>
@@ -48,7 +50,7 @@
               Возможность оформление заказа без регистрации
             </h5>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" sm="6" md="3">
             <v-icon size="64" class="mb-6" color="white">{{
               icons.sale
             }}</v-icon>
@@ -58,11 +60,17 @@
       </v-container>
     </section>
     <section class="py-16">
-      <v-container>
+      <v-container fluid>
         <v-row>
-          <v-col cols="6" v-for="(cat, i) in categories" :key="i">
+          <v-col cols="12" md="6" v-for="(cat, i) in categories" :key="i">
             <v-card>
-              <div class="d-flex flex-no-wrap justify-space-between">
+              <div
+                class="
+                  d-flex
+                  flex-column flex-sm-row flex-no-wrap
+                  justify-space-between
+                "
+              >
                 <div>
                   <nuxt-link :to="`/catalog/${cat.id}`">
                     <v-card-title> {{ cat.title }} </v-card-title>
@@ -75,7 +83,7 @@
                   </v-list>
                 </div>
                 <div>
-                  <v-avatar tile size="250" class="pa-4">
+                  <v-avatar tile :size="250" class="pa-4">
                     <v-img :src="cat.image.url" max-height="234" contain />
                   </v-avatar>
                 </div>
@@ -86,13 +94,16 @@
       </v-container>
     </section>
     <section>
-      <v-container>
+      <v-container fluid>
         <v-row class="mb-8">
           <v-col cols="12">
             <div class="d-flex justify-space-between align-baseline">
-              <h3 class="text-h4">Хиты продаж</h3>
+              <h3 class="text-sm-h4 text-h5 mb-2 mb-sm-0">Хиты продаж</h3>
               <v-btn text small link color="primary" to="#" class="text-button"
-                >Перейти в каталог
+                >каталог
+                <v-icon :x-small="$vuetify.breakpoint.xsOnly">
+                  {{ icons.forward }}
+                </v-icon>
               </v-btn>
             </div>
           </v-col>
@@ -119,19 +130,24 @@
       style="background: url(/images/index/new-bg.webp)"
       class="white--text"
     >
-      <v-container>
+      <v-container fluid>
         <v-row>
-          <v-col cols="4">
-            <h3 class="text-h3 mb-12">Новинки</h3>
+          <v-col md="4" cols="12">
+            <h3 class="text-sm-h4 text-h5 mb-8 mb-sm-12">Новинки</h3>
             <p class="text-body-1 grey--text darken-1 mb-8">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
               ratione laudantium rem non vitae cumque? Officiis, unde laudantium
               officia nulla, dolore a totam consequatur vitae labore et sed,
               quae est.
             </p>
-            <v-btn text link to="#" color="orange">Больше новинок</v-btn>
+            <v-btn text link to="#" color="orange">
+              Больше новинок
+              <v-icon :x-small="$vuetify.breakpoint.xsOnly">
+                {{ icons.forward }}
+              </v-icon>
+            </v-btn>
           </v-col>
-          <v-col cols="8">
+          <v-col md="8" cols="12">
             <div class="swiper new-slider">
               <div class="swiper-wrapper">
                 <div
@@ -149,13 +165,18 @@
       </v-container>
     </section>
     <section>
-      <v-container>
-        <v-row class="justify-space-between align-baseline mb-8">
+      <v-container fluid>
+        <v-row
+          class="justify-space-between align-baseline mb-8 d-block d-sm-flex"
+        >
           <v-col cols="12">
             <div class="d-flex justify-space-between align-baseline">
-              <h3 class="text-h3">Акции</h3>
+              <h3 class="text-sm-h4 text-h5 mb-2 mb-sm-0">Акции</h3>
               <v-btn text link color="primary" to="#" class="text-button"
                 >Все акции
+                <v-icon :x-small="$vuetify.breakpoint.xsOnly">
+                  {{ icons.forward }}
+                </v-icon>
               </v-btn>
             </div>
           </v-col>
@@ -179,15 +200,28 @@
       </v-container>
     </section>
     <section>
-      <v-container>
-        <v-row class="justify-space-between align-baseline mb-8">
-          <h3 class="text-h3">Наши статьи</h3>
-          <v-btn text link color="primary" to="#" class="text-button"
-            >Перейти в блог
-          </v-btn>
+      <v-container fluid>
+        <v-row>
+          <v-col cols="12">
+            <div class="justify-space-between align-baseline mb-8 d-flex">
+              <h3 class="text-sm-h4 text-h5 mb-2 mb-sm-0">Наши статьи</h3>
+              <v-btn text link color="primary" to="#" class="text-button"
+                >блог
+                <v-icon :x-small="$vuetify.breakpoint.xsOnly">
+                  {{ icons.forward }}
+                </v-icon>
+              </v-btn>
+            </div>
+          </v-col>
         </v-row>
         <v-row>
-          <v-col cols="4" v-for="(article, i) in articles" :key="i">
+          <v-col
+            cols="12"
+            sm="6"
+            md="4"
+            v-for="(article, i) in articles"
+            :key="i"
+          >
             <v-card class="article-card">
               <v-img :src="article.image.url" :alt="article.image.alt"> </v-img>
               <v-card-title>{{ article.title }}</v-card-title>
@@ -205,9 +239,9 @@
       </v-container>
     </section>
     <section>
-      <v-container>
+      <v-container fluid>
         <v-row>
-          <v-col cols="6" v-for="(item, i) in unknown" :key="i">
+          <v-col cols="12" md="6" v-for="(item, i) in unknown" :key="i">
             <v-card class="unknown-card">
               <v-card-title> Lorem, Ipsum </v-card-title>
               <v-divider></v-divider>
@@ -225,11 +259,13 @@
       </v-container>
     </section>
     <section>
-      <v-container>
-        <v-row class="justify-space-between align-baseline mb-8">
+      <v-container fluid>
+        <v-row
+          class="justify-space-between align-baseline mb-8 d-block d-sm-flex"
+        >
           <v-col cols="12">
             <div class="d-flex justify-space-between align-baseline">
-              <h3 class="text-h3">Кухни</h3>
+              <h3 class="text-sm-h4 text-h5 mb-2 mb-sm-0">Кухни</h3>
               <v-btn text link color="primary" to="#" class="text-button"
                 >Все кухни
               </v-btn>
@@ -263,6 +299,7 @@ import {
   mdiTruckDeliveryOutline,
   mdiClipboardCheckOutline,
   mdiSaleOutline,
+  mdiChevronRight,
 } from "@mdi/js";
 
 import "swiper/swiper.min.css";
@@ -280,12 +317,25 @@ export default {
 
     this.sliders.hits = new this.$swiper(".hits-slider", {
       spaceBetween: 20,
-      slidesPerView: 3,
+      // slidesPerView: 3,
       direction: "horizontal",
-      centeredSlides: true,
       autoHeight: true,
       autoplay: {
         delay: 3000,
+      },
+      breakpoints: {
+        320: {
+          centeredSlides: true,
+          slidesPerView: 1,
+        },
+        600: {
+          slidesPerView: 2,
+          centeredSlides: false,
+        },
+        960: {
+          centeredSlides: true,
+          slidesPerView: 3,
+        },
       },
       // configure Swiper to use modules
       modules: [this.$swiperModules.Autoplay],
@@ -299,6 +349,20 @@ export default {
       autoplay: {
         delay: 3000,
       },
+      breakpoints: {
+        320: {
+          centeredSlides: true,
+          slidesPerView: 1,
+        },
+        600: {
+          slidesPerView: 2,
+          centeredSlides: false,
+        },
+        960: {
+          centeredSlides: true,
+          slidesPerView: 3,
+        },
+      },
       // configure Swiper to use modules
       modules: [this.$swiperModules.Autoplay],
     });
@@ -311,6 +375,20 @@ export default {
       autoplay: {
         delay: 3000,
       },
+      breakpoints: {
+        320: {
+          centeredSlides: true,
+          slidesPerView: 1,
+        },
+        600: {
+          slidesPerView: 2,
+          centeredSlides: false,
+        },
+        960: {
+          centeredSlides: true,
+          slidesPerView: 3,
+        },
+      },
       // configure Swiper to use modules
       modules: [this.$swiperModules.Autoplay],
     });
@@ -318,10 +396,19 @@ export default {
       spaceBetween: 20,
       slidesPerView: 2,
       direction: "horizontal",
-      // centeredSlides: true,
       autoHeight: true,
       autoplay: {
         delay: 3000,
+      },
+      breakpoints: {
+        320: {
+          centeredSlides: true,
+          slidesPerView: 1,
+        },
+        600: {
+          centeredSlides: false,
+          slidesPerView: 2,
+        },
       },
       // configure Swiper to use modules
       modules: [this.$swiperModules.Autoplay],
@@ -335,6 +422,7 @@ export default {
         delivery: mdiTruckDeliveryOutline,
         order: mdiClipboardCheckOutline,
         sale: mdiSaleOutline,
+        forward: mdiChevronRight,
       },
       unknown: [
         {
@@ -362,6 +450,9 @@ export default {
     },
     kitchens() {
       return this.$store.getters["catalog/kitchens"];
+    },
+    isMobile() {
+      return this.$vuetify.breakpoint.mobile;
     },
   },
 };
@@ -394,5 +485,14 @@ section:not(:first-child) {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+section.bg-1 {
+  background: url("/images/index/bg.webp") center / cover no-repeat;
+}
+
+section.bg-1 h5 {
+  max-width: 80%;
+  margin: 0 auto;
 }
 </style>

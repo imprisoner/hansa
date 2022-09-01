@@ -1,5 +1,5 @@
 <template>
-  <v-container class="product-page">
+  <v-container fluid class="product-page">
     <v-row>
       <v-col cols="12">
         <v-breadcrumbs :items="breadcrumbs" large>

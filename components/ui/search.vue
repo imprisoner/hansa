@@ -18,7 +18,7 @@
   >
     <template v-slot:item="data">
       <template>
-        <nuxt-link :to="`${data.item.id}`">
+        <nuxt-link :to="`/product/${data.item.id}`">
           <v-list-item dense>
             <v-list-item-avatar tile>
               <v-img contain :src="data.item.image.url" />
@@ -40,12 +40,12 @@
 </template>
 
 <script>
-import { mdiSearchWeb } from "@mdi/js";
+import { mdiMagnify } from "@mdi/js";
 export default {
   data() {
     return {
       icons: {
-        search: mdiSearchWeb,
+        search: mdiMagnify,
       },
       product: null,
       loading: false,

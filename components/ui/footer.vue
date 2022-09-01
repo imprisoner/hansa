@@ -1,7 +1,7 @@
 <template>
   <div class="ui-footer">
     <section class="ui-footer__about">
-      <v-container>
+      <v-container fluid>
         <v-row>
           <v-col cols="12" class="">
             <h5 class="text-h5 orange--text font-weight-bold text-center">
@@ -27,9 +27,9 @@
       </v-container>
     </section>
     <section class="ui-footer__nav">
-      <v-container>
+      <v-container fluid>
         <v-row>
-          <v-col cols="4">
+          <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
               <h5 class="text-h5 text-uppercase font-weight-medium">
                 Информация
@@ -46,7 +46,7 @@
               </v-list-item-group>
             </v-list>
           </v-col>
-          <v-col cols="4">
+          <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
               <h5 class="text-h5 text-uppercase font-weight-medium">
                 Cлужба поддержки
@@ -63,7 +63,7 @@
               </v-list-item-group>
             </v-list>
           </v-col>
-          <v-col cols="4">
+          <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
               <h5 class="text-h5 text-uppercase font-weight-medium">
                 Дополнительно
@@ -78,7 +78,7 @@
               </v-list-item-group>
             </v-list>
           </v-col>
-          <v-col cols="4">
+          <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
               <h5 class="text-h5 text-uppercase font-weight-medium">
                 Личный кабинет
@@ -98,11 +98,11 @@
         </v-row>
       </v-container>
     </section>
-    <v-divider dark inset></v-divider>
+    <v-divider dark inset class="mx-auto"></v-divider>
     <section class="ui-footer__bottom">
-      <v-container>
+      <v-container fluid>
         <v-row>
-          <v-col cols="4">
+          <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
               <v-list-item-group v-model="selected">
                 <h5 class="text-h5 text-uppercase font-weight-medium">
@@ -149,9 +149,59 @@
               </v-list-item-group>
             </v-list>
           </v-col>
+          <v-col cols="6" md="4">
+            <v-list class="ui-footer__navlist" flat dark>
+              <v-list-item-group v-model="selected">
+                <h5 class="text-h5 text-uppercase font-weight-medium">
+                  Полезные ссылки
+                </h5>
+                <ui-footer-policy-dialog />
+              </v-list-item-group>
+            </v-list>
+          </v-col>
+          <v-col cols="6" md="4">
+            <v-list class="ui-footer__navlist" flat dark>
+              <v-list-item-group v-model="selected">
+                <h5 class="text-h5 text-uppercase font-weight-medium">
+                  Наша гарантия
+                </h5>
+                <v-list-item>
+                  <v-list-item-content>
+                    Недовольны своей покупкой? Вы можете вернуть ее в течении 30
+                    дней с даты получения, согласно
+                    <span class="rules-trigger orange--text">
+                      нашим правилам
+                    </span>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-col>
+          <v-col cols="6" md="4">
+            <v-list class="ui-footer__navlist" flat dark>
+              <h5 class="text-h5 text-uppercase font-weight-medium">
+                Новостная рассылка
+              </h5>
+              <v-list-item inactive>
+                <v-list-item-title>
+                  Подпишитесь прямо сейчас!
+                </v-list-item-title>
+              </v-list-item>
+              <v-list-item>
+                <v-text-field
+                  label="Ваша почта"
+                  color="orange"
+                  dense
+                  outlined
+                  :append-outer-icon="icons.emailArrow"
+                ></v-text-field>
+              </v-list-item>
+            </v-list>
+          </v-col>
         </v-row>
       </v-container>
     </section>
+    <v-divider dark inset class="mx-auto"></v-divider>
   </div>
 </template>
 
@@ -161,6 +211,7 @@ import {
   mdiPhone,
   mdiClockOutline,
   mdiEmailFastOutline,
+  mdiEmailArrowRightOutline,
 } from "@mdi/js";
 
 export default {
@@ -172,6 +223,7 @@ export default {
         clock: mdiClockOutline,
         marker: mdiMapMarker,
         envelope: mdiEmailFastOutline,
+        emailArrow: mdiEmailArrowRightOutline,
       },
     };
   },
@@ -180,7 +232,7 @@ export default {
 
 <style scoped>
 .ui-footer {
-  padding-bottom: 76px;
+  padding-bottom: 208px;
   background-color: #1e1e1e;
 }
 
@@ -200,7 +252,6 @@ export default {
 .ui-footer__navlist h5 {
   margin-bottom: 24px;
 }
-
 .ui-footer__navlist .v-list-item {
   opacity: 0.8;
 }

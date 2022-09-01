@@ -1,55 +1,73 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row>
       <v-col cols="12">
         <h3 class="text-h3">Корзина</h3>
       </v-col>
     </v-row>
-    <v-row v-if="cart.length">
-      <v-col cols="8" class="items-area">
-        <cart-item
-          v-for="product in cart"
-          :key="product.id"
-          :product="product"
-        />
-      </v-col>
-      <v-row></v-row>
-      <v-col cols="4">
-        <v-sheet elevation="4" rounded class="fixed pa-2">
-          <v-card-actions class="align-start">
-            <v-text-field
-              outlined
-              flat
-              dense
-              single-line
-              hide-spin-buttons
-              hint="Введите промокод"
-              persistent-hint
-              class="promo__input"
-              color="black"
-            ></v-text-field>
-            <v-btn height="40" dark color="black" depressed class="promo__btn"
-              >Подтвердить</v-btn
+    <v-row class="justify-center">
+      <template v-if="cart.length">
+        <cart-items-area :cart="cart"></cart-items-area>
+        <v-col cols="10" md="4">
+          <v-sheet elevation="4" rounded class="pa-2">
+            <v-card-actions class="align-start flex-column">
+              <label v-if="$vuetify.breakpoint.mdAndDown" class="mb-1">Введите промокод:</label>
+              <div class="d-flex align-start">
+                <v-text-field
+                  outlined
+                  flat
+                  dense
+                  single-line
+                  hide-spin-buttons
+                  :hide-details="$vuetify.breakpoint.mdAndDown"
+                  hint="Введите промокод"
+                  persistent-hint
+                  class="promo__input"
+                  color="black"
+                ></v-text-field>
+                <v-btn
+                  height="40"
+                  dark
+                  color="black"
+                  depressed
+                  class="promo__btn"
+                  >{{$vuetify.breakpoint.mdAndDown ? 'OK' : 'Подтвердить'}}</v-btn
+                >
+              </div>
+            </v-card-actions>
+            <v-subheader class="d-flex justify-space-between"
+              ><span>Доставка:</span> <span>{{ delivery }} ₽</span></v-subheader
             >
-          </v-card-actions>
-          <v-subheader class="d-flex justify-space-between"><span>Доставка:</span> <span>{{delivery}} ₽</span></v-subheader>
-          <v-subheader class="d-flex justify-space-between red--text text--lighten-1"><span>Скидка:</span> <span>- {{discount}} ₽</span></v-subheader>
-          <v-subheader class="d-flex justify-space-between orange--text text--lighten-1"><span>Промокод:</span> <span>- {{promoDiscount}} ₽</span></v-subheader>
-          <v-subheader class="d-flex justify-space-between"><span>Налог:</span> <span>{{tax}} ₽</span></v-subheader>
-          <v-divider></v-divider>
-          <v-subheader class="d-flex justify-space-between text-subtitle-1 font-weight-medium black--text"
-            ><span>Итого:</span>
-            <span>{{ total }} ₽</span></v-subheader
-          >
-          <v-card-actions>
-            <v-btn block color="success"> К заказу </v-btn>
-          </v-card-actions>
-        </v-sheet>
-      </v-col>
-    </v-row>
-    <!--  -->
-    <v-row v-else>
-      <v-col cols="12">
+            <v-subheader
+              class="d-flex justify-space-between red--text text--lighten-1"
+              ><span>Скидка:</span> <span>- {{ discount }} ₽</span></v-subheader
+            >
+            <v-subheader
+              class="d-flex justify-space-between orange--text text--lighten-1"
+              ><span>Промокод:</span>
+              <span>- {{ promoDiscount }} ₽</span></v-subheader
+            >
+            <v-subheader class="d-flex justify-space-between"
+              ><span>Налог:</span> <span>{{ tax }} ₽</span></v-subheader
+            >
+            <v-divider></v-divider>
+            <v-subheader
+              class="
+                d-flex
+                justify-space-between
+                text-subtitle-1
+                font-weight-medium
+                black--text
+              "
+              ><span>Итого:</span> <span>{{ total }} ₽</span></v-subheader
+            >
+            <v-card-actions>
+              <v-btn block color="success"> К заказу </v-btn>
+            </v-card-actions>
+          </v-sheet>
+        </v-col>
+      </template>
+      <v-col cols="12" v-else>
         <h5 class="text-h5">В вашей корзине нет продуктов</h5>
       </v-col>
     </v-row>
@@ -62,7 +80,7 @@ export default {
     return {
       promoDiscount: 0,
       delivery: 0,
-      tax: 0
+      tax: 0,
     };
   },
   computed: {
@@ -70,13 +88,10 @@ export default {
       return this.$store.getters["storage/cartList"];
     },
     discount() {
-      return this.$store.getters["storage/cartTotal"] - this.$store.getters["storage/cartEstimatedTotal"]
+      return this.$store.getters["storage/cartTotal"] - this.total;
     },
     total() {
       return this.$store.getters["storage/cartEstimatedTotal"];
-      // return state.cart
-      // .map(product => product.estimatedTotal)
-      // .reduce((acc, val) => acc + val)
     },
   },
   methods: {},
@@ -84,14 +99,6 @@ export default {
 </script>
 
 <style scoped>
-.items-area {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-height: calc(100vh - 74px - 48px - 64px);
-  overflow-y: scroll;
-}
-
 .promo__btn {
   border-top-left-radius: unset;
   border-bottom-left-radius: unset;
@@ -101,7 +108,4 @@ export default {
   border-top-right-radius: unset;
   border-bottom-right-radius: unset;
 }
-/* .fixed {
-  position: fixed;
-} */
 </style>

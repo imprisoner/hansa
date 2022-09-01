@@ -1,6 +1,6 @@
 <template>
-  <v-container class="catalog-page">
-    <v-row cols="12">
+  <v-container fluid class="catalog-page">
+    <v-row>
       <v-breadcrumbs :items="breadcrumbs" large>
         <template v-slot:item="{ item }">
           <v-breadcrumbs-item :disabled="item.disabled" nuxt :to="item.href">
@@ -10,65 +10,134 @@
       </v-breadcrumbs>
     </v-row>
     <v-row>
-      <v-col cols="4">
+      <v-col cols="12" md="4">
         <v-sheet elevation="2" rounded>
-          <v-card-title class="justify-center">Фильтр товаров</v-card-title>
-          <v-divider></v-divider>
-          <v-card-actions class="d-block">
-            <v-card-subtitle class="text-h6"> Цена </v-card-subtitle>
-            <div class="d-flex justify-space-between mb-12">
-              <v-text-field
-                v-model.number="filters.priceRange.value[0]"
-                class="mt-0 pt-0 mr-2"
+          <template v-if="$vuetify.breakpoint.smAndDown">
+            <v-expansion-panels v-model="filtersExpanded">
+              <v-expansion-panel>
+                <v-expansion-panel-header
+                  >Фильтр товаров</v-expansion-panel-header
+                >
+                <v-expansion-panel-content>
+                  <v-divider></v-divider>
+                  <v-card-actions class="d-block">
+                    <v-card-subtitle class="text-h6"> Цена </v-card-subtitle>
+                    <div class="d-flex justify-space-between mb-12">
+                      <v-text-field
+                        v-model.number="filters.priceRange.value[0]"
+                        class="mt-0 pt-0 mr-2"
+                        hide-details
+                        single-line
+                        type="number"
+                        style="width: 60px"
+                        outlined
+                        dense
+                      ></v-text-field>
+                      <v-spacer></v-spacer>
+                      <v-text-field
+                        v-model.number="filters.priceRange.value[1]"
+                        class="mt-0 pt-0 ml-2"
+                        outlined
+                        dense
+                        hide-details
+                        single-line
+                        type="number"
+                        style="width: 60px"
+                      ></v-text-field>
+                    </div>
+                    <v-range-slider
+                      v-model="filters.priceRange.value"
+                      :max="filters.priceRange.max"
+                      :min="filters.priceRange.min"
+                      hide-details
+                      thumb-label="always"
+                    >
+                    </v-range-slider>
+                  </v-card-actions>
+                  <v-divider></v-divider>
+                  <v-card-actions class="d-block">
+                    <v-card-subtitle class="text-h6">
+                      Материал
+                    </v-card-subtitle>
+                    <div class="d-block d-sm-flex flex-wrap d-md-block">
+                      <v-checkbox
+                        v-for="material of materialsSet"
+                        :key="material"
+                        :label="material"
+                        v-model="filters.materials"
+                        :value="material"
+                        :on-icon="icons.checkboxShown"
+                        :off-icon="icons.checkbox"
+                        hide-details
+                        class="mr-10 mr-md-0"
+                      />
+                    </div>
+                  </v-card-actions>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </template>
+          <template v-else>
+            <v-card-title class="justify-center">Фильтр товаров</v-card-title>
+            <v-divider></v-divider>
+            <v-card-actions class="d-block">
+              <v-card-subtitle class="text-h6"> Цена </v-card-subtitle>
+              <div class="d-flex justify-space-between mb-12">
+                <v-text-field
+                  v-model.number="filters.priceRange.value[0]"
+                  class="mt-0 pt-0 mr-2"
+                  hide-details
+                  single-line
+                  type="number"
+                  style="width: 60px"
+                  outlined
+                  dense
+                ></v-text-field>
+                <v-spacer></v-spacer>
+                <v-text-field
+                  v-model.number="filters.priceRange.value[1]"
+                  class="mt-0 pt-0 ml-2"
+                  outlined
+                  dense
+                  hide-details
+                  single-line
+                  type="number"
+                  style="width: 60px"
+                ></v-text-field>
+              </div>
+              <v-range-slider
+                v-model="filters.priceRange.value"
+                :max="filters.priceRange.max"
+                :min="filters.priceRange.min"
                 hide-details
-                single-line
-                type="number"
-                style="width: 60px"
-                outlined
-                dense
-              ></v-text-field>
-              <v-spacer></v-spacer>
-              <v-text-field
-                v-model.number="filters.priceRange.value[1]"
-                class="mt-0 pt-0 ml-2"
-                outlined
-                dense
-                hide-details
-                single-line
-                type="number"
-                style="width: 60px"
-              ></v-text-field>
-            </div>
-            <v-range-slider
-              v-model="filters.priceRange.value"
-              :max="filters.priceRange.max"
-              :min="filters.priceRange.min"
-              hide-details
-              thumb-label="always"
-            >
-            </v-range-slider>
-          </v-card-actions>
-          <v-divider></v-divider>
-          <v-card-actions class="d-block">
-            <v-card-subtitle class="text-h6"> Материал </v-card-subtitle>
-            <div>
-              <v-checkbox
-                v-for="material of materialsSet"
-                :key="material"
-                :label="material"
-                v-model="filters.materials"
-                :value="material"
-                :on-icon="icons.checkboxShown"
-                :off-icon="icons.checkbox"
-                hide-details
-              />
-            </div>
-          </v-card-actions>
+                thumb-label="always"
+              >
+              </v-range-slider>
+            </v-card-actions>
+            <v-divider></v-divider>
+            <v-card-actions class="d-block">
+              <v-card-subtitle class="text-h6"> Материал </v-card-subtitle>
+              <div class="d-block d-sm-flex flex-wrap d-md-block">
+                <v-checkbox
+                  v-for="material of materialsSet"
+                  :key="material"
+                  :label="material"
+                  v-model="filters.materials"
+                  :value="material"
+                  :on-icon="icons.checkboxShown"
+                  :off-icon="icons.checkbox"
+                  hide-details
+                  class="mr-10 mr-md-0"
+                />
+              </div>
+            </v-card-actions>
+          </template>
         </v-sheet>
       </v-col>
-      <v-col cols="8" v-if="catalog.length">
+
+      <v-col cols="12" md="8" v-if="catalog.length">
         <v-row>
-          <v-col cols="6" v-for="(product, i) in renderable" :key="i">
+          <v-col cols="12" sm="6" v-for="(product, i) in renderable" :key="i">
             <product-card :product="product" class="mx-auto"></product-card>
           </v-col>
         </v-row>
@@ -122,6 +191,7 @@ export default {
         },
       ],
       filters: {
+        expanded: false,
         priceRange: {
           min: 0,
           max: 9999,
@@ -139,7 +209,7 @@ export default {
       this.localCatalog = this.localCatalog.concat(this.catalog);
     },
     // filter() {
-    //   this.renderable = 
+    //   this.renderable =
     // },
   },
   computed: {
@@ -163,6 +233,15 @@ export default {
       const arr = this.localCatalog.map((product) => product.materials).flat();
       return new Set(arr);
     },
+    filtersExpanded: {
+      get() {
+        if(this.$vuetify.breakpoint.smAndDown) return this.filters.expanded
+        return true
+      },
+      set(val) {
+        this.filters.expanded = val
+      }
+    }
   },
   watch: {
     catalog() {

@@ -1,8 +1,8 @@
 <template>
   <div class="counter d-flex align-center">
     <!-- <v-btn text depressed color="primary" width="40" height="40">-</v-btn> -->
-    <v-btn icon @click="decrease">
-      <v-icon color="primary">
+    <v-btn icon @click="decrease"  :small="$vuetify.breakpoint.smAndDown">
+      <v-icon color="primary"  :small="$vuetify.breakpoint.smAndDown">
         {{ icons.minus }}
       </v-icon>
     </v-btn>
@@ -12,12 +12,12 @@
       hide-spin-buttons
       dense
       single-line
-      height="36"
+      :height="$vuetify.breakpoint.mdAndUp ? 36 : 24"
       :value="value"
       @input="onInput"
     />
-    <v-btn icon @click="increase">
-      <v-icon color="primary">
+    <v-btn icon @click="increase"  :small="$vuetify.breakpoint.smAndDown">
+      <v-icon color="primary"  :small="$vuetify.breakpoint.smAndDown">
         {{ icons.plus }}
       </v-icon>
     </v-btn>
