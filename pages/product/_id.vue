@@ -16,10 +16,14 @@
       </v-col>
     </v-row>
     <v-row class="product-views mb-8" v-if="product">
-      <v-col cols="6" tag="section">
+      <v-col cols="12" lg="6" tag="section">
         <div class="product-slider swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide-active" v-for="i in 5" :key="i">
+            <div
+              class="swiper-slide swiper-slide-active"
+              v-for="i in 5"
+              :key="i"
+            >
               <v-img
                 max-height="100%"
                 contain
@@ -28,11 +32,11 @@
               />
             </div>
           </div>
-            <!--  -->
+          <!--  -->
         </div>
         <div class="product-slider__thumbs swiper" thumbsSlider>
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="i in 5" :key="i+5">
+            <div class="swiper-slide" v-for="i in 5" :key="i + 5">
               <v-img
                 max-height="100%"
                 contain
@@ -44,10 +48,10 @@
           </div>
         </div>
       </v-col>
-      <v-col cols="6" tag="section">
+      <v-col cols="12" lg="6" tag="section">
         <v-sheet rounded elevation="2">
           <div class="d-flex justify-space-between align-center">
-            <v-card-title class="text-h5 font-weight-bold">{{
+            <v-card-title class="text-subtitle-2 text-sm-h5 font-weight-bold">{{
               product.title
             }}</v-card-title>
             <v-card-actions>
@@ -96,19 +100,19 @@
             <v-row>
               <v-col cols="3"><p class="grey--text">Материал:</p></v-col>
               <v-col cols="9"
-                ><p>{{ product.materials.join(', ') }}</p></v-col
+                ><p>{{ product.materials.join(", ") }}</p></v-col
               >
             </v-row>
             <v-row>
               <v-col cols="3"><p class="grey--text">Размер:</p></v-col>
               <v-col cols="9"
-                ><p>{{ product.dimensions.join('x') }}</p></v-col
+                ><p>{{ product.dimensions.join("x") }}</p></v-col
               >
             </v-row>
             <v-row>
               <v-col cols="3"><p class="grey--text">Цвет:</p></v-col>
               <v-col cols="9"
-                ><p>{{ product.color.join(', ') }}</p></v-col
+                ><p>{{ product.color.join(", ") }}</p></v-col
               >
             </v-row>
           </v-card-text>
@@ -128,12 +132,20 @@
           <v-card-text>
             <h5 class="text-h5 font-weight-bold">от {{ product.price }} р.</h5>
           </v-card-text>
-          <v-card-actions>
-            <v-btn color="orange" x-large dark class="mr-2">
+          <v-card-actions class="d-block d-sm-flex">
+            <v-btn
+              color="orange"
+              :block="$vuetify.breakpoint.xsOnly"
+              x-large
+              dark
+              class="mr-0 mr-sm-2 mb-2 mb-sm-0"
+            >
               В корзину
               <v-icon class="ml-2">{{ icons.cart }}</v-icon>
             </v-btn>
-            <v-btn x-large dark> Купить в один клик </v-btn>
+            <v-btn x-large dark :block="$vuetify.breakpoint.xsOnly" class="ml-0 ml-sm-2">
+              Купить в один клик
+            </v-btn>
           </v-card-actions>
         </v-sheet>
       </v-col>
@@ -240,32 +252,33 @@ export default {
     if (!this.catalog.length) {
       await this.$store.dispatch("catalog/getCatalog");
     }
-    this.product = this.catalog.find(product => product.id === this.$route.params.id)
-    // 
+    this.product = this.catalog.find(
+      (product) => product.id === this.$route.params.id
+    );
+    //
     this.$nextTick(() => {
       this.sliders = {
-      main: null,
-      thumbs: null,
-    };
+        main: null,
+        thumbs: null,
+      };
 
-    this.sliders.thumbs = new this.$swiper(".product-slider__thumbs", {
-      spaceBetween: 10,
-      slidesPerView: 4,
-      freeMode: true,
-      watchSlidesProgress: true,
+      this.sliders.thumbs = new this.$swiper(".product-slider__thumbs", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
 
-      modules: [this.$swiperModules.Autoplay, this.$swiperModules.Thumbs],
+        modules: [this.$swiperModules.Autoplay, this.$swiperModules.Thumbs],
+      });
+
+      this.sliders.main = new this.$swiper(".product-slider", {
+        spaceBetween: 10,
+        thumbs: {
+          swiper: this.sliders.thumbs,
+        },
+        modules: [this.$swiperModules.Autoplay, this.$swiperModules.Thumbs],
+      });
     });
-
-    this.sliders.main = new this.$swiper(".product-slider", {
-      spaceBetween: 10,
-      thumbs: {
-        swiper: this.sliders.thumbs,
-      },
-      modules: [this.$swiperModules.Autoplay, this.$swiperModules.Thumbs],
-    });
-    })
-    
   },
   methods: {
     onScalesClick() {},
@@ -311,6 +324,11 @@ export default {
   height: 600px;
 }
 
+@media (max-width: 599px) {
+  .product-views section:last-child {
+    height: auto;
+  }
+}
 /* .swiper-slide img {
   display: block;
   width: 100%;
