@@ -14,15 +14,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic' },
       // {rel:"stylesheet", href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/fonts.css'
-  ],
+  // css: [
+  //   '~/assets/fonts.css'
+  // ],
   serverMiddleware: [
     { path: "/api", handler: require("body-parser").json() },
     {
