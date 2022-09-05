@@ -155,7 +155,7 @@
                 <h5 class="text-h5 text-uppercase font-weight-medium">
                   Полезные ссылки
                 </h5>
-                <ui-footer-policy-dialog />
+                <lazy-ui-footer-policy-dialog />
               </v-list-item-group>
             </v-list>
           </v-col>
@@ -215,6 +215,9 @@ import {
 } from "@mdi/js";
 
 export default {
+  // components: {
+  //   FooterPolicyDialog: () => import('~/components/ui/footer/policy-dialog.vue')
+  // },
   data() {
     return {
       selected: "",

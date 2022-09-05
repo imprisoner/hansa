@@ -55,6 +55,7 @@
           grey--text
           text--lighten-1
         "
+        no-prefetch
       >
         Ханса-Мебель
       </nuxt-link>

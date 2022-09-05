@@ -1,7 +1,7 @@
 <template>
   <v-menu open-on-hover bottom offset-y>
     <template v-slot:activator="{ on, attrs }">
-      <v-btn icon to="/cart" v-bind="attrs" v-on="on">
+      <v-btn icon to="/cart" v-bind="attrs" v-on="on" nuxt no-prefetch>
         <v-icon :size="iconSize">{{ icons.cart }}</v-icon>
         <v-badge
           bordered

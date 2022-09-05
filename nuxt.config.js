@@ -14,15 +14,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic' },
+      // { rel: 'preconnect', crossorigin: true, as: 'font', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic', },
       // {rel:"stylesheet", href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  // css: [
-  //   '~/assets/fonts.css'
-  // ],
+  css: [
+    '~/assets/fonts.css'
+  ],
   serverMiddleware: [
     { path: "/api", handler: require("body-parser").json() },
     {
@@ -40,7 +40,7 @@ export default {
   plugins: [
     { src: '~/plugins/swiper.client.js', mode: 'client' }
   ],
-
+  ssr: true,
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -70,14 +70,14 @@ export default {
     defaultAssets: false,
     breakpoint: {
       mobileBreakpoint: 'sm'
-    //   thresholds: {
-    //     xs: 340,
-    //     sm: 540,
-    //     md: 800,
-    //     lg: 1280,
-    //   },
+      //   thresholds: {
+      //     xs: 340,
+      //     sm: 540,
+      //     md: 800,
+      //     lg: 1280,
+      //   },
     },
-    theme: {
+    // theme: {
       // dark: true,
       // themes: {
       //   dark: {
@@ -90,9 +90,17 @@ export default {
       //     success: colors.green.accent3
       //   }
       // }
-    },
+    // },
   },
-
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'home',
+        path: '/home',
+        component: resolve(__dirname, 'pages/index.vue')
+      })
+    }
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     analyze: true,

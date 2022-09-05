@@ -72,7 +72,7 @@
                 "
               >
                 <div>
-                  <nuxt-link :to="`/catalog/${cat.id}`">
+                  <nuxt-link :to="`/catalog/${cat.id}`" no-prefetch>
                     <v-card-title> {{ cat.title }} </v-card-title>
                   </nuxt-link>
                   <v-divider></v-divider>
@@ -110,26 +110,18 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <div class="swiper hits-slider">
-              <div class="swiper-wrapper">
-                <div
-                  class="swiper-slide"
-                  v-for="(product, i) in catalog"
-                  :key="i"
-                >
-                  <product-card :product="product" />
-                </div>
-              </div>
-            </div>
+            <home-products-slider
+              v-if="catalog.length"
+              :products="catalog"
+              :config="slidersConfigs.full"
+              container-class="hits-slider"
+            />
           </v-col>
         </v-row>
         <!--  -->
       </v-container>
     </section>
-    <section
-      style="background: url(/images/index/new-bg.webp)"
-      class="white--text"
-    >
+    <section class="bg-2 white--text">
       <v-container fluid>
         <v-row>
           <v-col md="4" cols="12">
@@ -148,17 +140,12 @@
             </v-btn>
           </v-col>
           <v-col md="8" cols="12">
-            <div class="swiper new-slider">
-              <div class="swiper-wrapper">
-                <div
-                  class="swiper-slide"
-                  v-for="(product, i) in catalog"
-                  :key="i"
-                >
-                  <product-card :product="product" />
-                </div>
-              </div>
-            </div>
+            <home-products-slider
+              v-if="catalog.length"
+              :products="catalog"
+              :config="slidersConfigs.cut"
+              container-class="fresh-slider"
+            />
           </v-col>
         </v-row>
         <!--  -->
@@ -183,17 +170,12 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <div class="swiper discounts-slider">
-              <div class="swiper-wrapper">
-                <div
-                  class="swiper-slide"
-                  v-for="(product, i) in catalog"
-                  :key="i"
-                >
-                  <product-card :product="product" />
-                </div>
-              </div>
-            </div>
+            <home-products-slider
+              v-if="catalog.length"
+              :products="catalog"
+              :config="slidersConfigs.full"
+              container-class="discounts-slider"
+            />
           </v-col>
         </v-row>
         <!--  -->
@@ -274,17 +256,12 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <div class="swiper kitchens-slider">
-              <div class="swiper-wrapper">
-                <div
-                  class="swiper-slide"
-                  v-for="(product, i) in kitchens"
-                  :key="i"
-                >
-                  <product-card :product="product" />
-                </div>
-              </div>
-            </div>
+            <home-products-slider
+              v-if="catalog.length"
+              :products="catalog"
+              :config="slidersConfigs.full"
+              container-class="kitchen-slider"
+            />
           </v-col>
         </v-row>
         <!--  -->
@@ -306,113 +283,10 @@ import "swiper/swiper.min.css";
 
 export default {
   async mounted() {
+
     if (!this.catalog.length) {
       await this.$store.dispatch("catalog/getCatalog");
     }
-
-    const sliderSections = ["hits", "discounts", "kitchens", "new"];
-    const entries = sliderSections.map((key) => [key, null]);
-
-    this.sliders = Object.fromEntries(entries);
-
-    this.sliders.hits = new this.$swiper(".hits-slider", {
-      spaceBetween: 20,
-      // slidesPerView: 3,
-      direction: "horizontal",
-      autoHeight: true,
-      autoplay: {
-        delay: 3000,
-      },
-      breakpoints: {
-        320: {
-          centeredSlides: true,
-          slidesPerView: 1,
-        },
-        600: {
-          slidesPerView: 2,
-          centeredSlides: false,
-        },
-        960: {
-          centeredSlides: true,
-          slidesPerView: 3,
-        },
-      },
-      // configure Swiper to use modules
-      modules: [this.$swiperModules.Autoplay],
-    });
-    this.sliders.kitchens = new this.$swiper(".kitchens-slider", {
-      spaceBetween: 20,
-      slidesPerView: 3,
-      direction: "horizontal",
-      centeredSlides: true,
-      autoHeight: true,
-      autoplay: {
-        delay: 3000,
-      },
-      breakpoints: {
-        320: {
-          centeredSlides: true,
-          slidesPerView: 1,
-        },
-        600: {
-          slidesPerView: 2,
-          centeredSlides: false,
-        },
-        960: {
-          centeredSlides: true,
-          slidesPerView: 3,
-        },
-      },
-      // configure Swiper to use modules
-      modules: [this.$swiperModules.Autoplay],
-    });
-    this.sliders.discounts = new this.$swiper(".discounts-slider", {
-      spaceBetween: 20,
-      slidesPerView: 3,
-      direction: "horizontal",
-      centeredSlides: true,
-      autoHeight: true,
-      autoplay: {
-        delay: 3000,
-      },
-      breakpoints: {
-        320: {
-          centeredSlides: true,
-          slidesPerView: 1,
-        },
-        600: {
-          slidesPerView: 2,
-          centeredSlides: false,
-        },
-        960: {
-          centeredSlides: true,
-          slidesPerView: 3,
-        },
-      },
-      // configure Swiper to use modules
-      modules: [this.$swiperModules.Autoplay],
-    });
-    this.sliders.new = new this.$swiper(".new-slider", {
-      spaceBetween: 20,
-      slidesPerView: 2,
-      direction: "horizontal",
-      autoHeight: true,
-      autoplay: {
-        delay: 3000,
-      },
-      breakpoints: {
-        320: {
-          centeredSlides: true,
-          slidesPerView: 1,
-        },
-        600: {
-          centeredSlides: false,
-          slidesPerView: 2,
-        },
-      },
-      // configure Swiper to use modules
-      modules: [this.$swiperModules.Autoplay],
-    });
   },
   name: "IndexPage",
   data() {
@@ -436,6 +310,50 @@ export default {
           url: "#",
         },
       ],
+      slidersConfigs: {
+        full: {
+          spaceBetween: 20,
+          slidesPerView: 3,
+          direction: "horizontal",
+          autoHeight: true,
+          autoplay: {
+            delay: 3000,
+          },
+          breakpoints: {
+            320: {
+              centeredSlides: true,
+              slidesPerView: 1,
+            },
+            600: {
+              slidesPerView: 2,
+              centeredSlides: false,
+            },
+            960: {
+              centeredSlides: true,
+              slidesPerView: 3,
+            },
+          },
+        },
+        cut: {
+          spaceBetween: 20,
+          slidesPerView: 2,
+          direction: "horizontal",
+          autoHeight: true,
+          autoplay: {
+            delay: 3000,
+          },
+          breakpoints: {
+            320: {
+              centeredSlides: true,
+              slidesPerView: 1,
+            },
+            600: {
+              centeredSlides: false,
+              slidesPerView: 2,
+            },
+          },
+        },
+      },
     };
   },
   computed: {
@@ -459,17 +377,8 @@ export default {
 </script>
 
 <style scoped>
-.swiper .product-card {
-  box-sizing: border-box;
-  margin: 0 auto;
-}
-
 section:not(:first-child) {
   padding: 40px 0;
-}
-
-.swiper > .swiper-wrapper {
-  padding: 5px 0;
 }
 
 .article-card {
@@ -494,5 +403,9 @@ section.bg-1 {
 section.bg-1 h5 {
   max-width: 80%;
   margin: 0 auto;
+}
+
+section.bg-2 {
+  background: url(/images/index/new-bg.webp) center / cover no-repeat;
 }
 </style>

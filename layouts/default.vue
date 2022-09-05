@@ -7,8 +7,7 @@
       temporary
       :width="$vuetify.breakpoint.mobile ? '100vw' : ''"
     >
-      
-      <ui-drawer-nav @close="drawer=false"></ui-drawer-nav>
+      <lazy-ui-drawer-nav @close="drawer = false"></lazy-ui-drawer-nav>
     </v-navigation-drawer>
     <layout-header @toggle="($event) => (drawer = $event)"></layout-header>
 
@@ -16,10 +15,10 @@
       <Nuxt />
     </v-main>
     <template>
-      <ui-footer-mobile v-if="isMobile" />
-      <ui-footer v-else />
+      <lazy-ui-footer-mobile v-if="isMobile" />
+      <lazy-ui-footer v-else />
     </template>
-    <layout-footer></layout-footer>
+    <lazy-layout-footer></lazy-layout-footer>
   </v-app>
 </template>
 

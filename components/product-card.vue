@@ -1,6 +1,6 @@
 <template>
   <!-- <v-card class="product-card" max-width="320px"> -->
-  <v-card class="product-card" max-width="100%">
+  <v-card class="product-card" >
     <v-avatar width="100%" height="240" tile>
       <v-img
         :src="product.image.url"
