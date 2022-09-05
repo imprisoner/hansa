@@ -7,10 +7,6 @@
       "config": {
         "serverFiles": ["server-middleware/**", "api/notify.js"]
       }
-    },
-    {
-      "src": "*.woff",
-      "use": "@vercel/static"
     }
   ]
 }
