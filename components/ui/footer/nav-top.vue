@@ -2,8 +2,12 @@
   <section class="ui-footer__nav">
     <v-container fluid>
       <v-row>
-        <v-col cols="6" md="4" v-for="(section, i) in sections.top" :key="i">
-          <v-expansion-panels flat :mandatory="!$vuetify.breakpoint.mobile" dark>
+        <v-col cols="12" md="4" v-for="(section, i) in sections.top" :key="i">
+          <v-expansion-panels
+            flat
+            :mandatory="!$vuetify.breakpoint.mobile"
+            dark
+          >
             <v-expansion-panel>
               <v-expansion-panel-header
                 :expand-icon="$vuetify.breakpoint.mobile ? icons.expand : ''"
@@ -11,16 +15,14 @@
               >
                 {{ section.title }}
               </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-list-item-group>
-                  <v-list-item
-                    v-for="(link, j) in section.links"
-                    :key="j"
-                    nuxt
-                    :to="link.to"
-                    >{{ link.title }}
-                  </v-list-item>
-                </v-list-item-group>
+              <v-expansion-panel-content class="ui-footer__navlist">
+                <v-list-item
+                  v-for="(link, j) in section.links"
+                  :key="j"
+                  nuxt
+                  :to="link.to"
+                  >{{ link.title }}
+                </v-list-item>
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>

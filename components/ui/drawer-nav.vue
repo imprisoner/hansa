@@ -1,5 +1,5 @@
 <template>
-  <v-list :dense="$vuetify.mobile">
+  <v-list :dense="$vuetify.breakpoint.mobile">
     <v-subheader class="d-flex justify-space-between">
       Навигация
       <v-btn icon right @click="close">
