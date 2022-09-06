@@ -20,30 +20,28 @@ async function callback(form = {}) {
       Номер телефона: ${form.phone} \n
       Сообщение: ${form.message} \n
     `
-  const info = await transporter.sendMail({
+  await transporter.sendMail({
     sender: process.env.smtp_user,
-    from: `Сервис Ханса-Мебель <${process.env.smtp_user}>`,
-    to: 'Andy <st8prisoner@gmail.com>',
-    subject: 'Заказать звонок',
+    from: `Сервис Ханса-Мебель <${opts.auth.user}>`,
+    to: `Владелец магазина <${process.env.smtp_inbox}>`,
+    subject: 'Перезвоните клиенту',
     text: template
   })
-  return info
 }
 
-async function subscribe(email) {
+async function subscribe({email}) {
   const template = `
     Эл. почта: ${email}
   `
 
-  transporter.sendMail({
+  await transporter.sendMail({
     sender: process.env.smtp_user,
-    from: `Сервис Ханса-Мебель <${process.env.smtp_user}>`,
-    to: 'Andy <st8prisoner@gmail.com>',
-    subject: 'Подписаться на новости',
+    from: `Сервис Ханса-Мебель <${opts.auth.user}>`,
+    to: `Владелец магазина <${process.env.smtp_inbox}>`,
+    subject: 'Подписка на рассылку',
     text: template
-  }).then(console.log)
+  })
 
 }
 
 module.exports = { callback, subscribe }
-// export { callback, subscribe }

@@ -130,7 +130,10 @@
                     dense
                     outlined
                     :append-outer-icon="icons.emailArrow"
-                  ></v-text-field>
+                    v-model="subscribeForm.email"
+                    @click:append-outer="onSubscribe"
+                    @keydown.enter="onSubscribe"
+                  />
                 </v-list-item>
               </v-expansion-panel-content>
             </v-expansion-panel>
@@ -162,8 +165,20 @@ export default {
         emailArrow: mdiEmailArrowRightOutline,
         expand: mdiChevronUp,
       },
+      subscribeForm: {
+        email: ''
+      }
     };
   },
+  methods: {
+    onSubscribe() {
+      this.$axios.$post("/api/notify/subscribe", { ...this.subscribeForm }).then(() => {
+        // TODO success toast
+    });
+      // restore form initial state
+      this.subscribeForm.email = ""
+    }
+  }
 };
 </script>
 

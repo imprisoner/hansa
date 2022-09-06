@@ -70,6 +70,12 @@ export default {
   background-color: #1e1e1e;
 }
 
+@media (max-width: 599px) {
+  .ui-footer {
+    padding-bottom: 318px;
+  }
+}
+
 .ui-footer__about {
   padding-top: 40px;
   padding-bottom: 20px;

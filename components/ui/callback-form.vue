@@ -104,16 +104,6 @@
           >
         </div>
       </v-card-actions>
-
-      <!-- <v-btn icon absolute right top @click="dialog = !dialog">
-        <v-icon>
-          {{ icons.close }}
-        </v-icon>
-      </v-btn> -->
-
-      <!-- <v-card-title class="text-h5 font-weight-bold justify-center"
-        >Оставьте заявку</v-card-title
-      > -->
     </v-card>
   </v-dialog>
 </template>
@@ -169,11 +159,15 @@ export default {
   },
   methods: {
     onSubmit(e) {
-      console.log(e);
       e.preventDefault();
       this.$axios.$post("/api/notify/callback", { ...this.form }).then(() => {
         this.dialog = false;
+        // TODO success toast
       });
+      // restore form initial state
+      Object.keys(this.form).forEach(field => {
+        this.form[field] = ""
+      })
     },
     onClose() {
       this.dialog = false;
