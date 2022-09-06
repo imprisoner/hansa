@@ -26,78 +26,8 @@
         </v-row>
       </v-container>
     </section>
-    <section class="ui-footer__nav">
-      <v-container fluid>
-        <v-row>
-          <v-col cols="6" md="4">
-            <v-list class="ui-footer__navlist" flat dark>
-              <h5 class="text-h5 text-uppercase font-weight-medium">
-                Информация
-              </h5>
-              <v-list-item-group v-model="selected">
-                <v-list-item link to
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Facilis, tenetur?</v-list-item
-                >
-                <v-list-item link to>Каталог</v-list-item>
-                <v-list-item link to>О нас</v-list-item>
-                <v-list-item link to>Условия оплаты и доставки</v-list-item>
-                <v-list-item link to>Политика конфиденциальности</v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-col>
-          <v-col cols="6" md="4">
-            <v-list class="ui-footer__navlist" flat dark>
-              <h5 class="text-h5 text-uppercase font-weight-medium">
-                Cлужба поддержки
-              </h5>
-              <v-list-item-group v-model="selected">
-                <v-list-item link to
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Facilis, tenetur?</v-list-item
-                >
-                <v-list-item link to>Каталог</v-list-item>
-                <v-list-item link to>О нас</v-list-item>
-                <v-list-item link to>Условия оплаты и доставки</v-list-item>
-                <v-list-item link to>Политика конфиденциальности</v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-col>
-          <v-col cols="6" md="4">
-            <v-list class="ui-footer__navlist" flat dark>
-              <h5 class="text-h5 text-uppercase font-weight-medium">
-                Дополнительно
-              </h5>
-              <v-list-item-group v-model="selected">
-                <v-list-item link to
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Facilis, tenetur?</v-list-item
-                >
-                <v-list-item link to>Каталог</v-list-item>
-                <v-list-item link to>О нас</v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-col>
-          <v-col cols="6" md="4">
-            <v-list class="ui-footer__navlist" flat dark>
-              <h5 class="text-h5 text-uppercase font-weight-medium">
-                Личный кабинет
-              </h5>
-              <v-list-item-group v-model="selected">
-                <v-list-item link to
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Facilis, tenetur?</v-list-item
-                >
-                <v-list-item link to>Каталог</v-list-item>
-                <v-list-item link to>О нас</v-list-item>
-                <v-list-item link to>Условия оплаты и доставки</v-list-item>
-                <v-list-item link to>Политика конфиденциальности</v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
+    <ui-footer-nav-top />
+   
     <v-divider dark inset class="mx-auto"></v-divider>
     <section class="ui-footer__bottom">
       <v-container fluid>
@@ -212,6 +142,7 @@ import {
   mdiClockOutline,
   mdiEmailFastOutline,
   mdiEmailArrowRightOutline,
+  mdiChevronUp,
 } from "@mdi/js";
 
 export default {
@@ -220,6 +151,7 @@ export default {
   // },
   data() {
     return {
+      
       selected: "",
       icons: {
         phone: mdiPhone,
@@ -227,6 +159,7 @@ export default {
         marker: mdiMapMarker,
         envelope: mdiEmailFastOutline,
         emailArrow: mdiEmailArrowRightOutline,
+        expand: mdiChevronUp,
       },
     };
   },
@@ -249,13 +182,4 @@ export default {
   margin-bottom: 24px;
 }
 
-.ui-footer__nav {
-  padding: 20px 0;
-}
-.ui-footer__navlist h5 {
-  margin-bottom: 24px;
-}
-.ui-footer__navlist .v-list-item {
-  opacity: 0.8;
-}
 </style>

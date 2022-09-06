@@ -15,8 +15,8 @@
       <Nuxt />
     </v-main>
     <template>
-      <lazy-ui-footer-mobile v-if="isMobile" />
-      <lazy-ui-footer v-else />
+      <!-- <lazy-ui-footer-mobile v-if="isMobile" /> -->
+      <lazy-ui-footer />
     </template>
     <lazy-layout-footer></lazy-layout-footer>
   </v-app>
