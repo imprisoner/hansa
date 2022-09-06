@@ -110,12 +110,15 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <home-products-slider
-              v-if="catalog.length"
-              :products="catalog"
-              :config="slidersConfigs.full"
-              container-class="hits-slider"
-            />
+            <client-only>
+              <home-products-slider
+                v-if="catalog.length"
+                :products="catalog"
+                :config="slidersConfigs.full"
+                container-class="hits-slider"
+              >
+              </home-products-slider>
+            </client-only>
           </v-col>
         </v-row>
         <!--  -->
@@ -140,12 +143,15 @@
             </v-btn>
           </v-col>
           <v-col md="8" cols="12">
-            <home-products-slider
-              v-if="catalog.length"
-              :products="catalog"
-              :config="slidersConfigs.cut"
-              container-class="fresh-slider"
-            />
+            <client-only>
+              <home-products-slider
+                v-if="catalog.length"
+                :products="catalog"
+                :config="slidersConfigs.cut"
+                container-class="fresh-slider"
+              >
+              </home-products-slider>
+            </client-only>
           </v-col>
         </v-row>
         <!--  -->
@@ -170,12 +176,15 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <home-products-slider
-              v-if="catalog.length"
-              :products="catalog"
-              :config="slidersConfigs.full"
-              container-class="discounts-slider"
-            />
+            <client-only>
+              <home-products-slider
+                v-if="catalog.length"
+                :products="catalog"
+                :config="slidersConfigs.full"
+                container-class="discounts-slider"
+              >
+              </home-products-slider>
+            </client-only>
           </v-col>
         </v-row>
         <!--  -->
@@ -256,12 +265,15 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <home-products-slider
-              v-if="catalog.length"
-              :products="catalog"
-              :config="slidersConfigs.full"
-              container-class="kitchen-slider"
-            />
+            <client-only>
+              <home-products-slider
+                v-if="catalog.length"
+                :products="catalog"
+                :config="slidersConfigs.full"
+                container-class="kitchen-slider"
+              >
+              </home-products-slider>
+            </client-only>
           </v-col>
         </v-row>
         <!--  -->
@@ -279,11 +291,8 @@ import {
   mdiChevronRight,
 } from "@mdi/js";
 
-import "swiper/swiper.min.css";
-
 export default {
   async mounted() {
-
     if (!this.catalog.length) {
       await this.$store.dispatch("catalog/getCatalog");
     }

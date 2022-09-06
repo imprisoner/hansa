@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import "swiper/swiper.min.css";
+
 export default {
   props: ["products", "config", "containerClass"],
   data() {

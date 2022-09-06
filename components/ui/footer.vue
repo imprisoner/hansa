@@ -26,8 +26,10 @@
         </v-row>
       </v-container>
     </section>
-    <ui-footer-nav-top />
-   
+    <client-only>
+      <ui-footer-nav-top />
+    </client-only>
+
     <v-divider dark inset class="mx-auto"></v-divider>
     <section class="ui-footer__bottom">
       <v-container fluid>
@@ -176,5 +178,4 @@ export default {
 .ui-footer__about h5 {
   margin-bottom: 24px;
 }
-
 </style>
