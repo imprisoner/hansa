@@ -11,6 +11,8 @@ const opts = {
   }
 }
 
+const mailingList = process.env.smtp_inbox.split(',').map(email => `<${email}>`).join(',')
+
 const transporter = nodemailer.createTransport(opts)
 
 async function callback(form = {}) {
@@ -23,7 +25,7 @@ async function callback(form = {}) {
   await transporter.sendMail({
     sender: process.env.smtp_user,
     from: `Сервис Ханса-Мебель <${opts.auth.user}>`,
-    to: `Владелец магазина <${process.env.smtp_inbox}>`,
+    to: mailingList,
     subject: 'Перезвоните клиенту',
     text: template
   })
@@ -37,7 +39,7 @@ async function subscribe({email}) {
   await transporter.sendMail({
     sender: process.env.smtp_user,
     from: `Сервис Ханса-Мебель <${opts.auth.user}>`,
-    to: `Владелец магазина <${process.env.smtp_inbox}>`,
+    to: mailingList,
     subject: 'Подписка на рассылку',
     text: template
   })
