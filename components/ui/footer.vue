@@ -34,7 +34,7 @@
         <v-row>
           <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
-              <v-list-item-group v-model="selected">
+              <v-list-item-group>
                 <h5 class="text-h5 text-uppercase font-weight-medium">
                   Контакты
                 </h5>
@@ -81,7 +81,7 @@
           </v-col>
           <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
-              <v-list-item-group v-model="selected">
+              <v-list-item-group>
                 <h5 class="text-h5 text-uppercase font-weight-medium">
                   Полезные ссылки
                 </h5>
@@ -91,7 +91,7 @@
           </v-col>
           <v-col cols="6" md="4">
             <v-list class="ui-footer__navlist" flat dark>
-              <v-list-item-group v-model="selected">
+              <v-list-item-group>
                 <h5 class="text-h5 text-uppercase font-weight-medium">
                   Наша гарантия
                 </h5>
@@ -146,13 +146,8 @@ import {
 } from "@mdi/js";
 
 export default {
-  // components: {
-  //   FooterPolicyDialog: () => import('~/components/ui/footer/policy-dialog.vue')
-  // },
   data() {
     return {
-      
-      selected: "",
       icons: {
         phone: mdiPhone,
         clock: mdiClockOutline,
