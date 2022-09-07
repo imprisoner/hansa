@@ -19,20 +19,33 @@
     </template>
 
     <v-card :tile="$vuetify.breakpoint.mobile">
-      <v-tabs class="px-4 pt-2 mb-8" v-model="formTabs" hide-slider grow :vertical="$vuetify.breakpoint.xsOnly">
+      <v-tabs
+        class="px-4 pt-2 mb-8"
+        v-model="formTabs"
+        hide-slider
+        grow
+        :vertical="$vuetify.breakpoint.xsOnly"
+      >
         <v-tab class="text-body-2">Оставить заявку</v-tab>
         <v-tab class="text-body-2">Позвонить</v-tab>
       </v-tabs>
       <v-tabs-items v-model="formTabs" class="tab-content">
         <v-tab-item>
           <v-card-actions>
-            <v-form class="flex-grow-1">
+            <v-form
+              class="flex-grow-1"
+              v-model="formValid"
+              ref="callbackForm"
+              @keydown.enter="onSubmit"
+            >
               <!-- <v-divider class="mb-6"></v-divider> -->
               <v-text-field
                 v-model="form.name"
                 label="Ваше имя"
                 outlined
+                required
                 dense
+                :rules="formRules.name"
               ></v-text-field>
               <div class="d-flex justify-content-between flex-column">
                 <v-text-field
@@ -40,12 +53,16 @@
                   label="Почта"
                   outlined
                   dense
+                  :rules="formRules.email"
                 />
                 <v-text-field
                   v-model="form.phone"
+                  :rules="formRules.phone"
                   label="Телефон"
                   outlined
+                  required
                   dense
+                  v-mask="formRules.mask.phone"
                 />
               </div>
               <v-textarea
@@ -99,7 +116,13 @@
         <v-divider class="mb-6"></v-divider>
         <div class="d-flex justify-space-between">
           <v-btn @click="onClose" text color="warning">Закрыть</v-btn>
-          <v-btn @click="onSubmit" text color="success" v-if="formTabs === 0"
+          <v-btn
+            :disabled="!formValid"
+            @click="onSubmit"
+            @keydown.enter="onSubmit"
+            text
+            color="success"
+            v-if="formTabs === 0"
             >Отправить</v-btn
           >
         </div>
@@ -111,6 +134,7 @@
 <script>
 import { mdiClose, mdiPhoneOutline, mdiFacebook, mdiWhatsapp } from "@mdi/js";
 import tgIcon from "~/static/images/icons/tg";
+// import emailMask from "text-mask-addons/dist/emailMask";
 export default {
   props: ["iconSize"],
   data() {
@@ -121,6 +145,26 @@ export default {
         phone: "",
         email: "",
         message: "",
+      },
+      formValid: true,
+      formRules: {
+        name: [(v) => !!v || "Необходимо заполнить это поле"],
+        email: [
+          (v) =>
+            !v ||
+            /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(v) ||
+            "Неверный адрес почты",
+        ],
+        phone: [
+          (v) => (!!v && v.length === 18) || "Необходимо заполнить это поле",
+          (v) =>
+            /(?:\+|\d)[\d\-\(\) ]{9,}\d/g.test(v) ||
+            "Необходимо заполнить это поле",
+        ],
+        mask: {
+          // email: emailMask.mask,
+          phone: "+7 (###) ###-##-##",
+        },
       },
       dialog: false,
       icons: {
@@ -159,15 +203,22 @@ export default {
   },
   methods: {
     onSubmit(e) {
-      e.preventDefault();
-      this.$axios.$post("/api/notify/callback", { ...this.form }).then(() => {
+      this.$refs.callbackForm.validate();
+
+      if (this.formValid) {
+        console.log("form valid");
+        this.$axios.$post("/api/notify/callback", { ...this.form }).then(() => {
+          this.$refs.callbackForm.reset();
+          // TODO success toast
+        });
         this.dialog = false;
-        // TODO success toast
-      });
+      }
+
+      return;
       // restore form initial state
-      Object.keys(this.form).forEach(field => {
-        this.form[field] = ""
-      })
+      // Object.keys(this.form).forEach((field) => {
+      //   this.form[field] = "";
+      // });
     },
     onClose() {
       this.dialog = false;

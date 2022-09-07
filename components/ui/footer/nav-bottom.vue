@@ -129,6 +129,7 @@
                     color="orange"
                     dense
                     outlined
+                    :rules="subscribeForm.rules.email"
                     :append-outer-icon="icons.emailArrow"
                     v-model="subscribeForm.email"
                     @click:append-outer="onSubscribe"
@@ -166,7 +167,12 @@ export default {
         expand: mdiChevronUp,
       },
       subscribeForm: {
-        email: ''
+        email: '',
+        rules: {
+          email: [
+            (v) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(v) || "Неверный адрес почты"
+          ]
+        }
       }
     };
   },
