@@ -14,15 +14,22 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      // { rel: 'preconnect', crossorigin: true, as: 'font', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic', },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossorigin: ""
+      },
+      { rel: 'preload',as: 'style', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic', },
+      { rel: 'stylesheet', media: "print",  onload: "this.media='all'", href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic', },
+      
       // {rel:"stylesheet", href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/fonts.css'
-  ],
+  // css: [
+  //   '~/assets/fonts.css'
+  // ],
   serverMiddleware: [
     { path: "/api", handler: require("body-parser").json() },
     {
@@ -71,27 +78,7 @@ export default {
     defaultAssets: false,
     breakpoint: {
       mobileBreakpoint: 'sm'
-      //   thresholds: {
-      //     xs: 340,
-      //     sm: 540,
-      //     md: 800,
-      //     lg: 1280,
-      //   },
     },
-    // theme: {
-      // dark: true,
-      // themes: {
-      //   dark: {
-      //     primary: colors.blue.darken2,
-      //     accent: colors.grey.darken3,
-      //     secondary: colors.orange.darken3,
-      //     info: colors.teal.lighten1,
-      //     warning: colors.orange.base,
-      //     error: colors.deepOrange.accent4,
-      //     success: colors.green.accent3
-      //   }
-      // }
-    // },
   },
   router: {
     extendRoutes(routes, resolve) {
@@ -104,8 +91,24 @@ export default {
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    // analyze: true,
+    analyze: true,
     extractCSS: true,
+    babel: {
+      presets({ isClient }, preset) {
+        if (isClient) {
+          preset[1].targets = {
+            browsers: [
+              'Chrome >= 60',
+              'Safari >= 10.1',
+              'iOS >= 10.3',
+              'Firefox >= 54',
+              'Edge >= 15',
+            ]
+          }
+        }
+        return [preset]
+      }
+    },
   },
   watch: ['~/api/**/*.js'],
   target: 'server'

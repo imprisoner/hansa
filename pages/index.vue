@@ -24,7 +24,7 @@
           </v-col>
           <v-col md="5" cols="12">
             <v-img
-              :max-height="$vuetify.breakpoint.mdAndUp ? 380 : 'auto'"
+              :max-height="mainPicSize"
               src="/images/index/image.webp"
             ></v-img>
           </v-col>
@@ -114,7 +114,7 @@
               <home-products-slider
                 v-if="catalog.length"
                 :products="catalog"
-                :config="slidersConfigs.full"
+                :config="fullSlider"
                 container-class="hits-slider"
               >
               </home-products-slider>
@@ -147,7 +147,7 @@
               <home-products-slider
                 v-if="catalog.length"
                 :products="catalog"
-                :config="slidersConfigs.cut"
+                :config="cuttedSlider"
                 container-class="fresh-slider"
               >
               </home-products-slider>
@@ -180,7 +180,7 @@
               <home-products-slider
                 v-if="catalog.length"
                 :products="catalog"
-                :config="slidersConfigs.full"
+                :config="fullSlider"
                 container-class="discounts-slider"
               >
               </home-products-slider>
@@ -206,26 +206,11 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col
-            cols="12"
-            sm="6"
-            md="4"
+          <article-card
             v-for="(article, i) in articles"
             :key="i"
-          >
-            <v-card class="article-card">
-              <v-img :src="article.image.url" :alt="article.image.alt"> </v-img>
-              <v-card-title>{{ article.title }}</v-card-title>
-              <div class="d-flex justify-space-between align-center">
-                <v-card-subtitle>{{ article.publish_date }}</v-card-subtitle>
-                <v-card-actions>
-                  <v-btn large link text color="primary" :to="article.url"
-                    >Читать</v-btn
-                  >
-                </v-card-actions>
-              </div>
-            </v-card>
-          </v-col>
+            :article="article"
+          />
         </v-row>
       </v-container>
     </section>
@@ -269,7 +254,7 @@
               <home-products-slider
                 v-if="catalog.length"
                 :products="catalog"
-                :config="slidersConfigs.full"
+                :config="fullSlider"
                 container-class="kitchen-slider"
               >
               </home-products-slider>
@@ -291,80 +276,91 @@ import {
   mdiChevronRight,
 } from "@mdi/js";
 
+const icons = {
+  guarantee: mdiCheckDecagramOutline,
+  delivery: mdiTruckDeliveryOutline,
+  order: mdiClipboardCheckOutline,
+  sale: mdiSaleOutline,
+  forward: mdiChevronRight,
+};
+
+const sliderConfigs = {
+  full: {
+    spaceBetween: 20,
+    slidesPerView: 3,
+    direction: "horizontal",
+    autoHeight: true,
+    autoplay: {
+      delay: 3000,
+    },
+    breakpoints: {
+      320: {
+        centeredSlides: true,
+        slidesPerView: 1,
+      },
+      600: {
+        slidesPerView: 2,
+        centeredSlides: false,
+      },
+      960: {
+        centeredSlides: true,
+        slidesPerView: 3,
+      },
+    },
+  },
+  cut: {
+    spaceBetween: 20,
+    slidesPerView: 2,
+    direction: "horizontal",
+    autoHeight: true,
+    autoplay: {
+      delay: 3000,
+    },
+    breakpoints: {
+      320: {
+        centeredSlides: true,
+        slidesPerView: 1,
+      },
+      600: {
+        centeredSlides: false,
+        slidesPerView: 2,
+      },
+    },
+  },
+};
+
+const unknown = [
+  {
+    title: "Lorem Ipsum",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    url: "#",
+  },
+  {
+    title: "Lorem Ipsum",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    url: "#",
+  },
+];
+
 export default {
+  head: {
+    link: [
+      { rel: "preload", as: "image", href: "/images/index/bg.webp" },
+      { rel: "preload", as: "image", href: "/images/index/new-bg.webp" },
+      { rel: "preload", as: "image", href: "/images/index/image.webp" },
+    ],
+  },
   async mounted() {
     if (!this.catalog.length) {
       await this.$store.dispatch("catalog/getCatalog");
     }
   },
-  name: "IndexPage",
   data() {
     return {
-      icons: {
-        guarantee: mdiCheckDecagramOutline,
-        delivery: mdiTruckDeliveryOutline,
-        order: mdiClipboardCheckOutline,
-        sale: mdiSaleOutline,
-        forward: mdiChevronRight,
-      },
-      unknown: [
-        {
-          title: "Lorem Ipsum",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          url: "#",
-        },
-        {
-          title: "Lorem Ipsum",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          url: "#",
-        },
-      ],
-      slidersConfigs: {
-        full: {
-          spaceBetween: 20,
-          slidesPerView: 3,
-          direction: "horizontal",
-          autoHeight: true,
-          autoplay: {
-            delay: 3000,
-          },
-          breakpoints: {
-            320: {
-              centeredSlides: true,
-              slidesPerView: 1,
-            },
-            600: {
-              slidesPerView: 2,
-              centeredSlides: false,
-            },
-            960: {
-              centeredSlides: true,
-              slidesPerView: 3,
-            },
-          },
-        },
-        cut: {
-          spaceBetween: 20,
-          slidesPerView: 2,
-          direction: "horizontal",
-          autoHeight: true,
-          autoplay: {
-            delay: 3000,
-          },
-          breakpoints: {
-            320: {
-              centeredSlides: true,
-              slidesPerView: 1,
-            },
-            600: {
-              centeredSlides: false,
-              slidesPerView: 2,
-            },
-          },
-        },
-      },
+      icons,
     };
   },
+  name: "IndexPage",
   computed: {
     catalog() {
       return this.$store.getters["catalog/all"];
@@ -380,6 +376,18 @@ export default {
     },
     isMobile() {
       return this.$vuetify.breakpoint.mobile;
+    },
+    fullSlider() {
+      return sliderConfigs.full;
+    },
+    cuttedSlider() {
+      return sliderConfigs.cut;
+    },
+    unknown() {
+      return unknown;
+    },
+    mainPicSize() {
+      return this.$vuetify.breakpoint.mdAndUp ? 380 : "auto";
     },
   },
 };
@@ -406,7 +414,7 @@ a {
 }
 
 section.bg-1 {
-  background: url("/images/index/bg.webp") center / cover no-repeat;
+  background: url(/images/index/bg.webp) center / cover no-repeat;
 }
 
 section.bg-1 h5 {

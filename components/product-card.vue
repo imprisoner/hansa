@@ -126,13 +126,7 @@ export default {
       return this.$store.state.storage.favorites
         .map((item) => item.id)
         .includes(this.product.id);
-    },
-    // cart() {
-    //   return this.$store.state.cart
-    // },
-    // favorites() {
-    //   return this.$store.state.favorites
-    // }
+    }
   },
   methods: {
     onStorageBtnClick(storageName) {

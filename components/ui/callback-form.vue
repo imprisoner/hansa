@@ -30,7 +30,7 @@
         <v-tab class="text-body-2">Позвонить</v-tab>
       </v-tabs>
       <v-tabs-items v-model="formTabs" class="tab-content">
-        <v-tab-item>
+        <v-tab-item v-if="formTabs === 0">
           <v-card-actions>
             <v-form
               class="flex-grow-1"
@@ -74,7 +74,7 @@
             </v-form>
           </v-card-actions>
         </v-tab-item>
-        <v-tab-item>
+        <v-tab-item v-if="formTabs === 1">
           <v-card-actions class="d-block">
             <div v-for="(pos, i) in phoneNumbers" :key="i">
               <div class="py-2">
@@ -134,6 +134,36 @@
 <script>
 import { mdiClose, mdiPhoneOutline, mdiFacebook, mdiWhatsapp } from "@mdi/js";
 import tgIcon from "~/static/images/icons/tg";
+
+const social = [
+  {
+    icon: mdiFacebook,
+    href: "#",
+  },
+  {
+    icon: mdiWhatsapp,
+    href: "#",
+  },
+  {
+    icon: tgIcon,
+    href: "#",
+  },
+];
+
+const phoneNumbers = [
+  {
+    number: "+79990001122",
+    text: "Техподдержка",
+  },
+  {
+    number: "+79990001222",
+    text: "Персональный консультант",
+  },
+  {
+    number: "+79990001322",
+    text: "ул. Кладовая стр.118 корп.3",
+  },
+];
 // import emailMask from "text-mask-addons/dist/emailMask";
 export default {
   props: ["iconSize"],
@@ -171,34 +201,6 @@ export default {
         close: mdiClose,
         phone: mdiPhoneOutline,
       },
-      social: [
-        {
-          icon: mdiFacebook,
-          href: "#",
-        },
-        {
-          icon: mdiWhatsapp,
-          href: "#",
-        },
-        {
-          icon: tgIcon,
-          href: "#",
-        },
-      ],
-      phoneNumbers: [
-        {
-          number: "+79990001122",
-          text: "Техподдержка",
-        },
-        {
-          number: "+79990001222",
-          text: "Персональный консультант",
-        },
-        {
-          number: "+79990001322",
-          text: "ул. Кладовая стр.118 корп.3",
-        },
-      ],
     };
   },
   methods: {
@@ -215,14 +217,16 @@ export default {
       }
 
       return;
-      // restore form initial state
-      // Object.keys(this.form).forEach((field) => {
-      //   this.form[field] = "";
-      // });
     },
     onClose() {
       this.dialog = false;
     },
+    social() {
+      return social
+    },
+    phoneNumbers() {
+      return phoneNumbers
+    }
   },
 };
 </script>

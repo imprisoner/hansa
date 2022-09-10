@@ -5,8 +5,9 @@
       clipped
       v-model="drawer"
       temporary
-      :width="$vuetify.breakpoint.mobile ? '100vw' : ''"
+      :width="isMobile ? '100vw' : ''"
     >
+      <!-- v-if="drawer" -->
       <lazy-ui-drawer-nav @close="drawer = false" />
     </v-navigation-drawer>
     <layout-header @toggle="($event) => (drawer = $event)" />

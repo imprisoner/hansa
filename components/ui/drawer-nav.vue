@@ -29,59 +29,65 @@ import {
   mdiNewspaperVariantMultipleOutline,
   mdiAccount,
   mdiFileCad,
-  mdiClose
+  mdiClose,
 } from "@mdi/js";
+
+const items = [
+  {
+    icon: mdiAccount,
+    title: "Аккаунт",
+    to: "#",
+  },
+  {
+    icon: mdiFormatListChecks,
+    title: "Каталог",
+    to: "/catalog",
+  },
+  {
+    icon: mdiFileCad,
+    title: "Мебель под заказ",
+    to: "#",
+  },
+  {
+    icon: mdiTruckDelivery,
+    title: "Оплата и доставка",
+    to: "/about",
+  },
+  {
+    icon: mdiNewspaperVariantMultipleOutline,
+    title: "Новости",
+    to: "/about",
+  },
+  {
+    icon: mdiAccountGroup,
+    title: "О нас",
+    to: "/about",
+  },
+  {
+    icon: mdiContacts,
+    title: "Контакты",
+    to: "/contacts",
+  },
+];
 
 export default {
   data() {
     return {
       icons: {
-        close: mdiClose
+        close: mdiClose,
       },
-      items: [
-        {
-          icon: mdiAccount,
-          title: "Аккаунт",
-          to: "#",
-        },
-        {
-          icon: mdiFormatListChecks,
-          title: "Каталог",
-          to: "/catalog",
-        },
-        {
-          icon: mdiFileCad,
-          title: "Мебель под заказ",
-          to: "#",
-        },
-        {
-          icon: mdiTruckDelivery,
-          title: "Оплата и доставка",
-          to: "/about",
-        },
-        {
-          icon: mdiNewspaperVariantMultipleOutline,
-          title: "Новости",
-          to: "/about",
-        },
-        {
-          icon: mdiAccountGroup,
-          title: "О нас",
-          to: "/about",
-        },
-        {
-          icon: mdiContacts,
-          title: "Контакты",
-          to: "/contacts",
-        },
-      ],
     };
   },
   methods: {
     close() {
-      this.$emit('close')
-    }
-  }
+      this.$emit("close");
+    },
+  },
+  computed: {
+    items() {
+      return items;
+    },
+  },
 };
 </script>
 

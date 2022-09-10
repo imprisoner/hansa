@@ -34,133 +34,138 @@
 
 <script>
 import { mdiChevronUp } from "@mdi/js";
+const sections = {
+  top: [
+    {
+      title: "Информация",
+      links: [
+        {
+          title:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Каталог",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "О нас",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Условия оплаты и доставки",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Политика конфиденциальности",
+          href: "",
+          icon: null,
+        },
+      ],
+    },
+    {
+      title: "Служба поддержки",
+      links: [
+        {
+          title:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Каталог",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "О нас",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Условия оплаты и доставки",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Политика конфиденциальности",
+          href: "",
+          icon: null,
+        },
+      ],
+    },
+    {
+      title: "Дополнительно",
+      links: [
+        {
+          title:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Каталог",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "О нас",
+          href: "",
+          icon: null,
+        },
+      ],
+    },
+    {
+      title: "Личный кабинет",
+      links: [
+        {
+          title:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Каталог",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "О нас",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Условия оплаты и доставки",
+          href: "",
+          icon: null,
+        },
+        {
+          title: "Политика конфиденциальности",
+          href: "",
+          icon: null,
+        },
+      ],
+    },
+  ],
+};
 export default {
   data() {
     return {
       selected: "",
-      sections: {
-        top: [
-          {
-            title: "Информация",
-            links: [
-              {
-                title:
-                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Каталог",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "О нас",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Условия оплаты и доставки",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Политика конфиденциальности",
-                href: "",
-                icon: null,
-              },
-            ],
-          },
-          {
-            title: "Служба поддержки",
-            links: [
-              {
-                title:
-                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Каталог",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "О нас",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Условия оплаты и доставки",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Политика конфиденциальности",
-                href: "",
-                icon: null,
-              },
-            ],
-          },
-          {
-            title: "Дополнительно",
-            links: [
-              {
-                title:
-                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Каталог",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "О нас",
-                href: "",
-                icon: null,
-              },
-            ],
-          },
-          {
-            title: "Личный кабинет",
-            links: [
-              {
-                title:
-                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, tenetur?",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Каталог",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "О нас",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Условия оплаты и доставки",
-                href: "",
-                icon: null,
-              },
-              {
-                title: "Политика конфиденциальности",
-                href: "",
-                icon: null,
-              },
-            ],
-          },
-        ],
-      },
       icons: {
         expand: mdiChevronUp,
       },
     };
   },
+  computed: {
+    sections() {
+      return sections
+    }
+  }
 };
 </script>
 

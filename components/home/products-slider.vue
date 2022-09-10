@@ -13,13 +13,8 @@ import "swiper/swiper.min.css";
 
 export default {
   props: ["products", "config", "containerClass"],
-  data() {
-    return {
-      slider: null,
-    };
-  },
   mounted() {
-      this.slider = new this.$swiper(`.${this.containerClass}`, {
+      new this.$swiper(`.${this.containerClass}`, {
         ...this.config,
         modules: [this.$swiperModules.Autoplay]
       });

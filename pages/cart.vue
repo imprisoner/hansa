@@ -31,7 +31,7 @@
                   color="black"
                   depressed
                   class="promo__btn"
-                  >{{$vuetify.breakpoint.mdAndDown ? 'OK' : 'Подтвердить'}}</v-btn
+                  >{{promoBtnSize}}</v-btn
                 >
               </div>
             </v-card-actions>
@@ -93,6 +93,9 @@ export default {
     total() {
       return this.$store.getters["storage/cartEstimatedTotal"];
     },
+    promoBtnSize() {
+      return this.$vuetify.breakpoint.mdAndDown ? 'OK' : 'Подтвердить'
+    }
   },
   methods: {},
 };
