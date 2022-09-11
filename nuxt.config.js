@@ -21,8 +21,6 @@ export default {
       },
       { rel: 'preload',as: 'style', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic', },
       { rel: 'stylesheet', media: "print",  onload: "this.media='all'", href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic', },
-      
-      // {rel:"stylesheet", href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
     ]
   },
 

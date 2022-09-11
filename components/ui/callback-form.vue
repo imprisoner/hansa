@@ -56,7 +56,8 @@
                   :rules="formRules.email"
                 />
                 <v-text-field
-                  v-model="form.phone"
+                  @focus="showPhoneMask"
+                  v-model="form.phone.value"
                   :rules="formRules.phone"
                   label="Телефон"
                   outlined
@@ -172,7 +173,10 @@ export default {
       formTabs: "",
       form: {
         name: "",
-        phone: "",
+        phone: {
+          isDirty: false,
+          value: "",
+        },
         email: "",
         message: "",
       },
@@ -192,7 +196,6 @@ export default {
             "Необходимо заполнить это поле",
         ],
         mask: {
-          // email: emailMask.mask,
           phone: "+7 (###) ###-##-##",
         },
       },
@@ -208,7 +211,6 @@ export default {
       this.$refs.callbackForm.validate();
 
       if (this.formValid) {
-        console.log("form valid");
         this.$axios.$post("/api/notify/callback", { ...this.form }).then(() => {
           this.$refs.callbackForm.reset();
           // TODO success toast
@@ -222,11 +224,17 @@ export default {
       this.dialog = false;
     },
     social() {
-      return social
+      return social;
     },
     phoneNumbers() {
-      return phoneNumbers
-    }
+      return phoneNumbers;
+    },
+    showPhoneMask() {
+      if (!this.form.phone.isDirty) {
+        this.form.phone.value = ('+7 (');
+        this.form.phone.isDirty = true;
+      }
+    },
   },
 };
 </script>

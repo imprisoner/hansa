@@ -1,15 +1,17 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      app
-      clipped
-      v-model="drawer"
-      temporary
-      :width="isMobile ? '100vw' : ''"
-    >
-      <!-- v-if="drawer" -->
-      <lazy-ui-drawer-nav @close="drawer = false" />
-    </v-navigation-drawer>
+    <v-lazy>
+      <v-navigation-drawer
+        app
+        clipped
+        v-model="drawer"
+        temporary
+        :width="isMobile ? '100vw' : ''"
+      >
+        <!-- v-if="drawer" -->
+        <lazy-ui-drawer-nav @close="drawer = false" />
+      </v-navigation-drawer>
+    </v-lazy>
     <layout-header @toggle="($event) => (drawer = $event)" />
     <v-main class="layout-content">
       <Nuxt />
